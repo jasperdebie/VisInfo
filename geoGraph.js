@@ -9,7 +9,7 @@ var projection = d3.geo.mercator()
     .translate([width / 2, height / 2])
     .precision(.1);
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#geoGraph").append("svg")
     .attr("width", width)
     .attr("height", height);
 
