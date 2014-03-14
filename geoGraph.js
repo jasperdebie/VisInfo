@@ -31,6 +31,18 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
         .datum(topojson.feature(topology, topology.objects.countries))//take the countries and project them
         //topology.objects.land only shows the land, does not split into countries
         .attr("d", path) //attribute d requires a path, which contains instructions for visualizing the path.
-
-
 });
+
+
+//.......
+//Zooming
+//.......
+var zoom = d3.behavior.zoom()
+    .on("zoom",function() { // because we added all the paths to a group, we can use the group element to adapt the svg
+        g.attr("transform","translate("+
+            d3.event.translate.join(",")+")scale("+d3.event.scale+")"); //retrieve the zooming and positing and move the group position
+        g.selectAll("path")
+            .attr("d", path.projection(projection)); //change projection of paths after zooming
+    });
+
+svg.call(zoom) //activate the zoomfunction
