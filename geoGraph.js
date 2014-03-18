@@ -28,12 +28,32 @@ var g = svg.append("g"); //It is easier to manipulite DOM-tree elements when you
 // load and display the World
 d3.json("datasets/world.json", function(error, topology) { //readout the world information/data
     g.append("path")
+        .attr("class","wordline")
         .datum(topojson.feature(topology, topology.objects.countries))//take the countries and project them
         //topology.objects.land only shows the land, does not split into countries
         .attr("d", path) //attribute d requires a path, which contains instructions for visualizing the path.
+        .attr("fill","green")
+        .attr("stroke","white")
+        .attr("stroke-width",.25)
+
+
 });
 
 
+
+function type(d) {
+    return {
+        type: "Feature",
+        properties: {
+            name: d.name,
+            state: d.year
+        },
+        geometry: {
+            type: "Point",
+            coordinates: [+d.reclat, +d.reclong]
+        }
+    };
+}
 //.......
 //Zooming
 //.......
