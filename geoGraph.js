@@ -50,20 +50,6 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
 });
 
 
-
-function type(d) {
-    return {
-        type: "Feature",
-        properties: {
-            name: d.features.properties.name,
-            year: d.properties.year
-        },
-        geometry: {
-            type: "Point",
-            coordinates: [+d.properties.reclat, +d.properties.reclong]
-        }
-    };
-}
 //.......
 //Zooming
 //.......
