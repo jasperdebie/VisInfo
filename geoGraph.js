@@ -14,7 +14,7 @@ var projection = d3.geo.mercator()
     .scale((width + 1) / 2 / Math.PI)// The size of the world map
     .translate([width / 2, height / 2])//positioning of the world map (which point in the center) in the svg
     .precision(.1); //adaptive resampling purposes (for example zooming)
-
+//world map
 var svg = d3.select("#geoGraph").append("svg") // select the div element and add an svg
     .attr("width", width)
     .attr("height", height);
@@ -36,7 +36,9 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
         .attr("stroke","white")
         .attr("stroke-width",0.25)
 
+    //load and display the ufo spottings
     d3.json("datasets/UfoGeojson.json", function(error, data){
+        //on worldmap
         var ufo = g.append("g")
         ufo.selectAll("path")
             .data(data.features)
@@ -45,9 +47,83 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
             .attr("r", 5)
             .style("fill", "red");
 
+        //on bar
+        var
+            margin = {top: 30, right: 10, bottom: 20, left: 40},
+            width = 960 - margin.left - margin.right,
+            height = 100 - margin.top - margin.bottom;
+
+        var parseDate = d3.time.format("%Y").parse;
+
+
+        var x = d3.time.scale().range([0, width]),
+            y = d3.scale.linear().range([height, 0]);
+
+        var xAxis = d3.svg.axis().scale(x).orient("bottom"),
+            yAxis = d3.svg.axis().scale(y).orient("left");
+
+        var brush = d3.svg.brush()
+            .x(x)
+            .on("brushend", brushed);
+
+        var area2 = d3.svg.area()
+            .interpolate("monotone")
+            .x(function(d) { return x(parseDate(d.year)); })
+            .y0(height)
+            .y1(function(d) { return y(d.amount); });
+
+        var svg = d3.select("#yearFilter").append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom);
+
+        svg.append("defs").append("clipPath")
+            .attr("id", "clip")
+            .append("rect")
+            .attr("width", width)
+            .attr("height", height);
+
+        var context = svg.append("g")
+            .attr("class", "context")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        d3.json("datasets/brushData.json",  function(error, data) {
+            x.domain(d3.extent(data.map(function(d) { return parseDate(d.year); })));
+            y.domain([0, d3.max(data.map(function(d) { return d.amount; }))]);
+
+            context.append("path")
+                .datum(data)
+                .attr("class", "area")
+                .attr("d", area2);
+
+            context.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(0," + height + ")")
+                .call(xAxis);
+
+            context.append("g")
+                .attr("class", "x brush")
+                .call(brush)
+                .selectAll("rect")
+                .attr("y", -6)
+                .attr("height", height + 7);
+        });
+
+        function brushed() {
+
+                console.log(new Date( brush.extent()[0]).getFullYear())
+                console.log(new Date( brush.extent()[1]).getFullYear())
+
+            ufo.selectAll("path").style("fill", "blue")
+          //  x.domain(brush.empty() ? x2.domain() : brush.extent());
+          //  focus.select(".area").attr("d", area);
+          //  focus.select(".x.axis").call(xAxis);
+        }
+
+
     })
 
 });
+
 
 
 //.......
