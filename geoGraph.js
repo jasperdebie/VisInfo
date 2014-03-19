@@ -36,7 +36,7 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
         .attr("stroke","white")
         .attr("stroke-width",0.25)
 
-    d3.json("datasets/geojson.json", function(error, data){
+    d3.json("datasets/UfoGeojson.json", function(error, data){
         var ufo = g.append("g")
         ufo.selectAll("path")
             .data(data.features)
