@@ -34,8 +34,18 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
         .attr("d", path) //attribute d requires a path, which contains instructions for visualizing the path.
         .attr("fill","green")
         .attr("stroke","white")
-        .attr("stroke-width",.25)
+        .attr("stroke-width",0.25)
 
+    d3.json("datasets/geojson.json", function(error, data){
+        var ufo = g.append("g")
+        ufo.selectAll("path")
+            .data(data.features)
+            .enter().append("path")
+            .attr("d", path)
+            .attr("r", 5)
+            .style("fill", "red");
+
+    })
 
 });
 
@@ -45,12 +55,12 @@ function type(d) {
     return {
         type: "Feature",
         properties: {
-            name: d.name,
-            state: d.year
+            name: d.features.properties.name,
+            year: d.properties.year
         },
         geometry: {
             type: "Point",
-            coordinates: [+d.reclat, +d.reclong]
+            coordinates: [+d.properties.reclat, +d.properties.reclong]
         }
     };
 }
