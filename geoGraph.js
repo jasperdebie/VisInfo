@@ -86,12 +86,12 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
             .attr("class", "context")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-        d3.json("datasets/brushData.json",  function(error, data) {
-            x.domain(d3.extent(data.map(function(d) { return parseDate(d.year); })));
-            y.domain([0, d3.max(data.map(function(d) { return d.amount; }))]);
+        d3.json("datasets/brushData.json",  function(error, brushdata) {
+            x.domain(d3.extent(brushdata.map(function(d) { return parseDate(d.year); })));
+            y.domain([0, d3.max(brushdata.map(function(d) { return d.amount; }))]);
 
             context.append("path")
-                .datum(data)
+                .datum(brushdata)
                 .attr("class", "area")
                 .attr("d", area2);
 
@@ -109,11 +109,25 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
         });
 
         function brushed() {
+            var begindatum =parseInt(new Date( brush.extent()[0]).getFullYear());
+            var einddatum = parseInt(new Date( brush.extent()[1]).getFullYear());
 
+
+           ufo.selectAll("path").remove();
+            ufo.selectAll("path")
+                .data(data.features.filter(function(d,i){
+                    if ( begindatum <=  parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum){
+                       // console.log("begin" + begindatum + " " + d.properties.year + " " + einddatum)
+                        return d;
+                    }
+                }))
+                .enter().append("path")
+                .style("fill", "blue")
+                .attr("d", path.projection(projection));
                 console.log(new Date( brush.extent()[0]).getFullYear())
                 console.log(new Date( brush.extent()[1]).getFullYear())
 
-            ufo.selectAll("path").style("fill", "blue")
+           // ufo.selectAll("path").style("fill", "blue")
           //  x.domain(brush.empty() ? x2.domain() : brush.extent());
           //  focus.select(".area").attr("d", area);
           //  focus.select(".x.axis").call(xAxis);
