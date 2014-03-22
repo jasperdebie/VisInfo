@@ -1,0 +1,1585 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          6.08333,
+          50.775
+        ]
+      },
+      "properties": {
+        "name": "Aachen",
+        "nametype": "Valid",
+        "recclass": "L5",
+        "mass": "21",
+        "fall": "Fell",
+        "year": 1880,
+        "id": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.23333,
+          56.18333
+        ]
+      },
+      "properties": {
+        "name": "Aarhus",
+        "nametype": "Valid",
+        "recclass": "H6",
+        "mass": "720",
+        "fall": "Fell",
+        "year": 1951,
+        "id": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113,
+          54.21667
+        ]
+      },
+      "properties": {
+        "name": "Abee",
+        "nametype": "Valid",
+        "recclass": "EH4",
+        "mass": "107000",
+        "fall": "Fell",
+        "year": 1952,
+        "id": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.9,
+          16.88333
+        ]
+      },
+      "properties": {
+        "name": "Acapulco",
+        "nametype": "Valid",
+        "recclass": "Acapulcoite",
+        "mass": "1914",
+        "fall": "Fell",
+        "year": 1976,
+        "id": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -64.95,
+          -33.16667
+        ]
+      },
+      "properties": {
+        "name": "Achiras",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "780",
+        "fall": "Fell",
+        "year": 1902,
+        "id": 370
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.8,
+          32.1
+        ]
+      },
+      "properties": {
+        "name": "Adhi Kot",
+        "nametype": "Valid",
+        "recclass": "EH4",
+        "mass": "4239",
+        "fall": "Fell",
+        "year": 1919,
+        "id": 379
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95.16667,
+          44.83333
+        ]
+      },
+      "properties": {
+        "name": "Adzhi-Bogdo (stone)",
+        "nametype": "Valid",
+        "recclass": "LL3-6",
+        "mass": "910",
+        "fall": "Fell",
+        "year": 1949,
+        "id": 390
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          168,
+          -84
+        ]
+      },
+      "properties": {
+        "name": "Queen Alexandra Range 93369",
+        "nametype": "Valid",
+        "recclass": "L5",
+        "mass": "69,5",
+        "fall": "Found",
+        "year": 1993,
+        "id": 19457
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          168,
+          -84
+        ]
+      },
+      "properties": {
+        "name": "Queen Alexandra Range 93370",
+        "nametype": "Valid",
+        "recclass": "L5",
+        "mass": "92,4",
+        "fall": "Found",
+        "year": 1993,
+        "id": 19458
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          168,
+          -84
+        ]
+      },
+      "properties": {
+        "name": "Queen Alexandra Range 93371",
+        "nametype": "Valid",
+        "recclass": "L5",
+        "mass": "48,5",
+        "fall": "Found",
+        "year": 1993,
+        "id": 19459
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          161.94902,
+          -84.61124
+        ]
+      },
+      "properties": {
+        "name": "Queen Alexandra Range 93372",
+        "nametype": "Valid",
+        "recclass": "EH5",
+        "mass": "7,4",
+        "fall": "Found",
+        "year": 1993,
+        "id": 19460
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          168,
+          -84
+        ]
+      },
+      "properties": {
+        "name": "Queen Alexandra Range 93373",
+        "nametype": "Valid",
+        "recclass": "L5",
+        "mass": "35,2",
+        "fall": "Found",
+        "year": 1993,
+        "id": 19461
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793288",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "32,97",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28637
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793289",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "16,15",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28638
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793290",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "16,5",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28639
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793291",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "13,79",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28640
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793292",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "13,76",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28641
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793293",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "12,47",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28642
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793294",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "10,11",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28643
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793295",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "5,57",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28644
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793296",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "5,47",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28645
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793297",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "7,06",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28646
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793298",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "4,04",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28647
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793299",
+        "nametype": "Valid",
+        "recclass": "H6",
+        "mass": "8,68",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28648
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793300",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "3,8",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28649
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793301",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "5,23",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28650
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793302",
+        "nametype": "Valid",
+        "recclass": "H6",
+        "mass": "5,51",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28651
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793303",
+        "nametype": "Valid",
+        "recclass": "H3",
+        "mass": "3,51",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28652
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793304",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "2,72",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28653
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793305",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "2",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28654
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793306",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "2,14",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28655
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793307",
+        "nametype": "Valid",
+        "recclass": "L3",
+        "mass": "1,81",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28656
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793308",
+        "nametype": "Valid",
+        "recclass": "H6",
+        "mass": "1,36",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28657
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793309",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "1,59",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28658
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 793310",
+        "nametype": "Valid",
+        "recclass": "H3",
+        "mass": "1,71",
+        "fall": "Found",
+        "year": 1979,
+        "id": 28659
+      }
+    },
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.40194,
+          -71.54694
+        ]
+      },
+      "properties": {
+        "name": "Yamato 9414",
+        "nametype": "Valid",
+        "recclass": "OC",
+        "mass": "2,94",
+        "fall": "Found",
+        "year": 1994,
+        "id": 30337
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.40194,
+          -71.54694
+        ]
+      },
+      "properties": {
+        "name": "Yamato 9415",
+        "nametype": "Valid",
+        "recclass": "OC",
+        "mass": "0,75",
+        "fall": "Found",
+        "year": 1994,
+        "id": 30338
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.40194,
+          -71.54694
+        ]
+      },
+      "properties": {
+        "name": "Yamato 9416",
+        "nametype": "Valid",
+        "recclass": "OC",
+        "mass": "2,9",
+        "fall": "Found",
+        "year": 1994,
+        "id": 30339
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 980318",
+        "nametype": "Valid",
+        "recclass": "Eucrite-cm",
+        "mass": "166,81",
+        "fall": "Found",
+        "year": 1998,
+        "id": 30340
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.24265,
+          -72.09802
+        ]
+      },
+      "properties": {
+        "name": "Yamato 980459",
+        "nametype": "Valid",
+        "recclass": "Martian (shergottite)",
+        "mass": "82,46",
+        "fall": "Found",
+        "year": 1998,
+        "id": 30341
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.40194,
+          -71.54694
+        ]
+      },
+      "properties": {
+        "name": "Yamato 981031",
+        "nametype": "Valid",
+        "recclass": "Lunar (anorth)",
+        "mass": "185,8",
+        "fall": "Found",
+        "year": 1998,
+        "id": 30342
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          35.66667,
+          -71.5
+        ]
+      },
+      "properties": {
+        "name": "Yamato 981651",
+        "nametype": "Valid",
+        "recclass": "Eucrite",
+        "mass": "235,88",
+        "fall": "Found",
+        "year": 1998,
+        "id": 30343
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          36.00517,
+          -71.56283
+        ]
+      },
+      "properties": {
+        "name": "Yamato 983885",
+        "nametype": "Valid",
+        "recclass": "Lunar (anorth)",
+        "mass": "289,71",
+        "fall": "Found",
+        "year": 1999,
+        "id": 30344
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          141.03333,
+          -29.75
+        ]
+      },
+      "properties": {
+        "name": "Yandama",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "5800",
+        "fall": "Found",
+        "year": 1914,
+        "id": 30347
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.35,
+          17.53333
+        ]
+      },
+      "properties": {
+        "name": "Yanhuitlan",
+        "nametype": "Valid",
+        "recclass": "Iron, IVA",
+        "mass": "421000",
+        "fall": "Found",
+        "year": 1825,
+        "id": 30349
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.55,
+          -32.45
+        ]
+      },
+      "properties": {
+        "name": "Yardea",
+        "nametype": "Valid",
+        "recclass": "Iron, IAB-MG",
+        "mass": "3290",
+        "fall": "Found",
+        "year": 1875,
+        "id": 30351
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.64985,
+          -32.08287
+        ]
+      },
+      "properties": {
+        "name": "Yaringie Hill",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "5750",
+        "fall": "Found",
+        "year": 2006,
+        "id": 48950
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.46667,
+          -30.31667
+        ]
+      },
+      "properties": {
+        "name": "Yarle Lakes 001",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "913",
+        "fall": "Found",
+        "year": 1990,
+        "id": 30353
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.3745,
+          -30.36417
+        ]
+      },
+      "properties": {
+        "name": "Yarle Lakes 002",
+        "nametype": "Valid",
+        "recclass": "H4/5",
+        "mass": "500",
+        "fall": "Found",
+        "year": 1991,
+        "id": 30354
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.35833,
+          -30.28
+        ]
+      },
+      "properties": {
+        "name": "Yarle Lakes 003",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "14",
+        "fall": "Found",
+        "year": 1993,
+        "id": 30355
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          131.46667,
+          -30.5
+        ]
+      },
+      "properties": {
+        "name": "Yarle Lakes 004",
+        "nametype": "Valid",
+        "recclass": "CK4",
+        "mass": "4,6",
+        "fall": "Found",
+        "year": 2009,
+        "id": 52945
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.21667,
+          -29.45
+        ]
+      },
+      "properties": {
+        "name": "Yarri",
+        "nametype": "Valid",
+        "recclass": "Iron, IIIAB",
+        "mass": "1500",
+        "fall": "Found",
+        "year": 1908,
+        "id": 30356
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          145.58333,
+          -35.98333
+        ]
+      },
+      "properties": {
+        "name": "Yarroweyah",
+        "nametype": "Valid",
+        "recclass": "Iron, IIAB",
+        "mass": "9600",
+        "fall": "Found",
+        "year": 1903,
+        "id": 30357
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          126.175,
+          -32.03333
+        ]
+      },
+      "properties": {
+        "name": "Yayjinna",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "262,5",
+        "fall": "Found",
+        "year": 1965,
+        "id": 30359
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          14.89,
+          47.96
+        ]
+      },
+      "properties": {
+        "name": "Ybbsitz",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "15000",
+        "fall": "Found",
+        "year": 1977,
+        "id": 30360
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.42715,
+          39.55801
+        ]
+      },
+      "properties": {
+        "name": "Yelland 001",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "4,5",
+        "fall": "Found",
+        "year": 2011,
+        "id": 54765
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.40783,
+          39.35067
+        ]
+      },
+      "properties": {
+        "name": "Yelland Dry Lake",
+        "nametype": "Valid",
+        "recclass": "H4",
+        "mass": "76000",
+        "fall": "Found",
+        "year": 2007,
+        "id": 52641
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.01667,
+          -14.25
+        ]
+      },
+      "properties": {
+        "name": "Yenberrie",
+        "nametype": "Valid",
+        "recclass": "Iron, IAB-MG",
+        "mass": "132000",
+        "fall": "Found",
+        "year": 1918,
+        "id": 30361
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.53333,
+          -31.19167
+        ]
+      },
+      "properties": {
+        "name": "Yilmia",
+        "nametype": "Valid",
+        "recclass": "EL6",
+        "mass": "40000",
+        "fall": "Found",
+        "year": 1969,
+        "id": 30362
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          113.4,
+          24.2
+        ]
+      },
+      "properties": {
+        "name": "Yingde",
+        "nametype": "Valid",
+        "recclass": "Iron, IVA",
+        "mass": "3e+06",
+        "fall": "Found",
+        "year": 1964,
+        "id": 30363
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99.43333,
+          38.9
+        ]
+      },
+      "properties": {
+        "name": "Yocemento",
+        "nametype": "Valid",
+        "recclass": "L4",
+        "mass": "5920",
+        "fall": "Found",
+        "year": 1966,
+        "id": 30364
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          108.33333,
+          22.75
+        ]
+      },
+      "properties": {
+        "name": "Yongning",
+        "nametype": "Valid",
+        "recclass": "Iron, IAB-ung",
+        "mass": "60000",
+        "fall": "Found",
+        "year": 1971,
+        "id": 30365
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.5,
+          40.75
+        ]
+      },
+      "properties": {
+        "name": "York (iron)",
+        "nametype": "Valid",
+        "recclass": "Iron, IIIAB",
+        "mass": "835",
+        "fall": "Found",
+        "year": 1878,
+        "id": 30367
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.6,
+          40.86667
+        ]
+      },
+      "properties": {
+        "name": "York (stone)",
+        "nametype": "Valid",
+        "recclass": "L6",
+        "mass": "1440",
+        "fall": "Found",
+        "year": 1928,
+        "id": 30368
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.40278,
+          28.95
+        ]
+      },
+      "properties": {
+        "name": "Yorktown (Texas)",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "3500",
+        "fall": "Found",
+        "year": 1957,
+        "id": 30371
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.75,
+          -29.5
+        ]
+      },
+      "properties": {
+        "name": "Youanmi",
+        "nametype": "Valid",
+        "recclass": "Iron, IIIAB",
+        "mass": "118400",
+        "fall": "Found",
+        "year": 1917,
+        "id": 30373
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          117.71667,
+          -32.1
+        ]
+      },
+      "properties": {
+        "name": "Youndegin",
+        "nametype": "Valid",
+        "recclass": "Iron, IAB-MG",
+        "mass": "3.8e+06",
+        "fall": "Found",
+        "year": 1884,
+        "id": 30374
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          118.01,
+          26.06
+        ]
+      },
+      "properties": {
+        "name": "Youxi",
+        "nametype": "Valid",
+        "recclass": "Mesosiderite-C",
+        "mass": "218000",
+        "fall": "Found",
+        "year": 2006,
+        "id": 55793
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.18333,
+          31.65
+        ]
+      },
+      "properties": {
+        "name": "Ysleta",
+        "nametype": "Valid",
+        "recclass": "Iron, ungrouped",
+        "mass": "140700",
+        "fall": "Found",
+        "year": 1914,
+        "id": 30375
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.2761,
+          34.8197
+        ]
+      },
+      "properties": {
+        "name": "Yucca 015",
+        "nametype": "Valid",
+        "recclass": "H-metal",
+        "mass": "3",
+        "fall": "Found",
+        "year": 2011,
+        "id": 57175
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.27763,
+          34.82658
+        ]
+      },
+      "properties": {
+        "name": "Yucca 016",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "25,9",
+        "fall": "Found",
+        "year": 2011,
+        "id": 57158
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.27735,
+          34.81923
+        ]
+      },
+      "properties": {
+        "name": "Yucca 017",
+        "nametype": "Valid",
+        "recclass": "H5",
+        "mass": "200",
+        "fall": "Found",
+        "year": 2011,
+        "id": 57159
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          140,
+          60
+        ]
+      },
+      "properties": {
+        "name": "Yudoma",
+        "nametype": "Valid",
+        "recclass": "Iron, IVA",
+        "mass": "7600",
+        "fall": "Found",
+        "year": 1946,
+        "id": 30376
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -102.56667,
+          22.81667
+        ]
+      },
+      "properties": {
+        "name": "Zacatecas (1792)",
+        "nametype": "Valid",
+        "recclass": "Iron, ungrouped",
+        "mass": "1e+06",
+        "fall": "Found",
+        "year": 1792,
+        "id": 30381
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -94.75,
+          35
+        ]
+      },
+      "properties": {
+        "name": "Zaffra",
+        "nametype": "Valid",
+        "recclass": "Iron, IAB-MG",
+        "mass": "3000",
+        "fall": "Found",
+        "year": 1919,
+        "id": 30383
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -9.33333,
+          27.33333
+        ]
+      },
+      "properties": {
+        "name": "Zag (b)",
+        "nametype": "Valid",
+        "recclass": "Winonaite",
+        "mass": "300",
+        "fall": "Found",
+        "year": 1999,
+        "id": 30385
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -5.85,
+          30.36667
+        ]
+      },
+      "properties": {
+        "name": "Zagora",
+        "nametype": "Valid",
+        "recclass": "Iron, IAB-ung",
+        "mass": "50000",
+        "fall": "Found",
+        "year": 1987,
+        "id": 30387
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.86611,
+          50.76278
+        ]
+      },
+      "properties": {
+        "name": "Zak_odzie",
+        "nametype": "Valid",
+        "recclass": "Enst achon-ung",
+        "mass": "8680",
+        "fall": "Found",
+        "year": 1998,
+        "id": 30390
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -100.75,
+          25.00944
+        ]
+      },
+      "properties": {
+        "name": "Zapaliname",
+        "nametype": "Valid",
+        "recclass": "Iron, IAB-MG",
+        "mass": "85000",
+        "fall": "Found",
+        "year": 1998,
+        "id": 30392
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -99,
+          27
+        ]
+      },
+      "properties": {
+        "name": "Zapata County",
+        "nametype": "Valid",
+        "recclass": "Iron",
+        "mass": "",
+        "fall": "Found",
+        "year": 1930,
+        "id": 30393
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.5,
+          18.33333
+        ]
+      },
+      "properties": {
+        "name": "Zapotitl�n Salinas",
+        "nametype": "Valid",
+        "recclass": "L4",
+        "mass": "27,7",
+        "fall": "Found",
+        "year": 1984,
+        "id": 30394
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -0.86667,
+          41.65
+        ]
+      },
+      "properties": {
+        "name": "Zaragoza",
+        "nametype": "Valid",
+        "recclass": "Iron, IVA-an",
+        "mass": "162000",
+        "fall": "Found",
+        "year": 1950,
+        "id": 48916
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -115.68333,
+          33.98333
+        ]
+      },
+      "properties": {
+        "name": "Zulu Queen",
+        "nametype": "Valid",
+        "recclass": "L3.7",
+        "mass": "200",
+        "fall": "Found",
+        "year": 1976,
+        "id": 30414
+      }
+    }
+  ]
+}
