@@ -12,7 +12,8 @@ var width = 960,
 //how the worldmap has to be projected on the screen
 var projection = d3.geo.mercator()
     .scale((width + 1) / 2 / Math.PI)// The size of the world map
-    .translate([width / 2, height / 2])//positioning of the world map (which point in the center) in the svg
+    .translate([width / 2,
+        height / 2])//positioning of the world map (which point in the center) in the svg
     .precision(.1); //adaptive resampling purposes (for example zooming)
 //world map
 var svg = d3.select("#geoGraph").append("svg") // select the div element and add an svg
@@ -24,6 +25,8 @@ var path = d3.geo.path() // formats the 2D geometry to visible stuff in your svg
 
 var g = svg.append("g"); //It is easier to manipulite DOM-tree elements when you place them in a group
 //we place all the path's in this group element
+var g2 = svg.append("g");
+var ufo;
 
 // load and display the World
 d3.json("datasets/world.json", function(error, topology) { //readout the world information/data
@@ -39,12 +42,11 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
     //load and display the ufo spottings
     d3.json("datasets/UfoGeojson.json", function(error, data){
         //on worldmap
-        var ufo = g.append("g")
+        ufo = g2.append("g")
         ufo.selectAll("path")
             .data(data.features)
             .enter().append("path")
             .attr("d", path)
-            .attr("r", 5)
             .style("fill", "red");
 
         //on bar
@@ -123,7 +125,7 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
                 }))
                 .enter().append("path")
                 .style("fill", "blue")
-                .attr("d", path.projection(projection));
+
                 console.log(new Date( brush.extent()[0]).getFullYear())
                 console.log(new Date( brush.extent()[1]).getFullYear())
 
@@ -149,6 +151,12 @@ var zoom = d3.behavior.zoom()
             d3.event.translate.join(",")+")scale("+d3.event.scale+")"); //retrieve the zooming and positing and move the group position
         g.selectAll("path")
             .attr("d", path.projection(projection)); //change projection of paths after zooming
-    });
+
+        g2.attr("transform","translate("+
+            d3.event.translate.join(",")+")scale("+d3.event.scale+")").attr("r",0.5 / d3.event.scale +"px").redraw;
+        g2.selectAll("path")
+            .attr("d", path.projection(projection));
+
+       });
 
 svg.call(zoom) //activate the zoomfunction
