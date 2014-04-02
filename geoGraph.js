@@ -158,5 +158,5 @@ var zoom = d3.behavior.zoom()
             .attr("d", path.projection(projection));
 
        });
-
+//
 svg.call(zoom) //activate the zoomfunction
