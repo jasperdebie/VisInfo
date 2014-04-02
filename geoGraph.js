@@ -1,13 +1,18 @@
 /**
  * Created by Jasper on 13/03/14.
  */
-//File has to be placed at the bottom of the html page because he has to know the full DOM tree (in particular
-//the div geograph.
+
+/*
+ * File has to be placed at the bottom of the html page because he has to know the full DOM tree (in particular
+ * the div geograph.
+ */
+//
 
 
 //width and height of our geograph element!
 var width = 960,
     height = 960;
+var scalefactor = 1.5;
 
 //how the worldmap has to be projected on the screen
 var projection = d3.geo.mercator()
@@ -25,8 +30,14 @@ var path = d3.geo.path() // formats the 2D geometry to visible stuff in your svg
 
 var g = svg.append("g"); //It is easier to manipulite DOM-tree elements when you place them in a group
 //we place all the path's in this group element
-var g2 = svg.append("g");
 var ufo;
+
+var calcScale = function() {
+    var scale, s;
+    scale = d3.event.scale;
+    s = scalefactor / (scale / 5);
+    return s >= scalefactor ? scalefactor : s;
+}
 
 // load and display the World
 d3.json("datasets/world.json", function(error, topology) { //readout the world information/data
@@ -42,19 +53,19 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
     //load and display the ufo spottings
     d3.json("datasets/UfoGeojson.json", function(error, data){
         //on worldmap
-        ufo = g2.append("g")
-        ufo.selectAll("path")
+        ufo = g.append("g")
+        ufo.selectAll("circle")
             .data(data.features)
-            .enter().append("path")
-            .attr("d", path)
+            .enter()
+            .append("circle")
             .attr("cx", function(d) {
-                return projection([d.lon, d.lat])[0];
+                return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
             })
             .attr("cy", function(d) {
-                return projection([d.lon, d.lat])[1];
+                return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
             })
-            .attr("r", 5)
-            .style("fill", "red");
+            .style("fill", "red")
+            .attr("r", scalefactor);
 
         //on bar
         var
@@ -122,16 +133,24 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
             var einddatum = parseInt(new Date( brush.extent()[1]).getFullYear());
 
 
-           ufo.selectAll("path").remove();
-            ufo.selectAll("path")
+           ufo.selectAll("circle").remove();
+            ufo.selectAll("circle")
                 .data(data.features.filter(function(d,i){
                     if ( begindatum <=  parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum){
                        // console.log("begin" + begindatum + " " + d.properties.year + " " + einddatum)
                         return d;
                     }
                 }))
-                .enter().append("path")
+                .enter()
+                .append("circle")
+                .attr("cx", function(d) {
+                    return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+                })
+                .attr("cy", function(d) {
+                    return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+                })
                 .style("fill", "blue")
+                .attr("r", 1.5);
 
                 console.log(new Date( brush.extent()[0]).getFullYear())
                 console.log(new Date( brush.extent()[1]).getFullYear())
@@ -159,11 +178,10 @@ var zoom = d3.behavior.zoom()
         g.selectAll("path")
             .attr("d", path.projection(projection)); //change projection of paths after zooming
 
-        g2.attr("transform","translate("+
-            d3.event.translate.join(",")+")scale("+d3.event.scale+")").attr("r",0.5 / d3.event.scale +"px").redraw;
-        g2.selectAll("path")
-            .attr("d", path.projection(projection));
+        g.selectAll("circle")
+            .attr("r", calcScale());
+
 
        });
 //
-svg.call(zoom) //activate the zoomfunction
+svg.call(zoom); //activate the zoomfunction
