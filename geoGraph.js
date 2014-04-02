@@ -2,7 +2,7 @@
  * Created by Jasper on 13/03/14.
  *
  * File has to be placed at the bottom of the html page because he has to know the full DOM tree (in particular
- * the div geograph.
+ * the div's.
  */
 (function () {
 
@@ -46,7 +46,7 @@
         .precision(.1);
     /*
      * World map;
-     * first, select the div and append an svg element
+     * first, select the div and append a svg element
      * then set it's height and width properties
      */
     var svg = d3.select("#geoGraph").append("svg")
@@ -74,7 +74,7 @@
      * First we read out the data from json
      * datum actually take the country data and project them.
      * topojson.feature will get the correct collections for d3
-     * the "d" attribute is the actual informration for visualising the path
+     * the "d" attribute is the actual information for visualising the path
      */
     d3.json("datasets/world.json", function (error, topology) {
         g.append("path")
@@ -86,7 +86,7 @@
             .attr("stroke-width", 0.25);
 
         /*
-         * Load and dispaly UFO spottings on the world map
+         * Load and display UFO spottings on the world map
          *
          */
         d3.json("datasets/UfoGeojson.json", function (error, data) {
@@ -104,18 +104,20 @@
                 .style("fill", "red")
                 .attr("r", scaleFactor);
 
-            /* on bar */
+            /* Creation of Brush */
             var
                 margin = {top: 30, right: 10, bottom: 20, left: 40},
                 width = 960 - margin.left - margin.right,
                 height = 100 - margin.top - margin.bottom;
 
+            /* Get the correct form for data */
             var parseDate = d3.time.format("%Y").parse;
 
 
-            var x = d3.time.scale().range([0, width]),
+            var x = d3.time.scale().range([0, width]), // type scale
                 y = d3.scale.linear().range([height, 0]);
 
+            /* Position of brushbar */
             var xAxis = d3.svg.axis().scale(x).orient("bottom"),
                 yAxis = d3.svg.axis().scale(y).orient("left");
 
