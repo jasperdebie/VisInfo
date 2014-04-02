@@ -2,7 +2,7 @@
  * Created by mello on 3/19/14.
  */
 var fs = require('fs');
-var request = require('request');
+//var request = require('request');
 var json, file;
 var size = 1000;
 
@@ -55,8 +55,17 @@ for (var i=0; i < objects.length; i++) {
     o.geometry = newGeom;
     delete o.properties.reclat;
     delete o.properties.reclong;
+
+    // Jochen -- delete some other properties to make the loading faster -- did not work that well ;-) still slow
+    delete o.properties.nametype;
+    delete o.properties.recclass;
+    delete o.properties.mass;
+    delete o.properties.fall;
+    delete o.properties.id;
+
     if (!(blankOrZero(reclat) && blankOrZero(reclong))) {
-       outObjects.push(o);
+        if(o.properties.year>2001&& o.properties.year<2007)  // only add spottings between 2003 and 2007 // better for performance
+            outObjects.push(o);
     } else {
         filtered++;
     }
@@ -68,7 +77,7 @@ var outfile = "out.json";
 var output = JSON.stringify(json, null, 2);
 
 
-var req = request.post('http://geojsonlint.com/validate', output , processSuccess);
+//var req = request.post('http://geojsonlint.com/validate', output , processSuccess);
 
 fs.writeFileSync(outfile, output);
 
