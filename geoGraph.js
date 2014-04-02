@@ -47,6 +47,13 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
             .data(data.features)
             .enter().append("path")
             .attr("d", path)
+            .attr("cx", function(d) {
+                return projection([d.lon, d.lat])[0];
+            })
+            .attr("cy", function(d) {
+                return projection([d.lon, d.lat])[1];
+            })
+            .attr("r", 5)
             .style("fill", "red");
 
         //on bar
