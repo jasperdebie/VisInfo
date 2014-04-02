@@ -26,8 +26,10 @@
         scale = d3.event.scale;
         if (typeof scale !== 'undefined') {
             prevScale = scale;
-        } else {
+        } else if (typeof prevScale !== 'undefined') {
             scale = prevScale;
+        } else {
+            return scaleFactor;
         }
         s = scaleFactor / (scale / 5);
         return s >= scaleFactor ? scaleFactor : s;
@@ -178,6 +180,7 @@
                 var einddatum = parseInt(new Date(brush.extent()[1]).getFullYear());
 
 
+                console.log(ufo);
                 ufo.selectAll("circle").remove();
                 ufo.selectAll("circle")
                     .data(data.features.filter(function (d, i) {
@@ -197,13 +200,15 @@
                     .style("fill", "blue")
                     .attr("r", calcScale());
 
-                console.log(new Date(brush.extent()[0]).getFullYear())
-                console.log(new Date(brush.extent()[1]).getFullYear())
+                console.log(new Date(brush.extent()[0]).getFullYear());
+                console.log(new Date(brush.extent()[1]).getFullYear());
 
-                // ufo.selectAll("path").style("fill", "blue")
-                //  x.domain(brush.empty() ? x2.domain() : brush.extent());
-                //  focus.select(".area").attr("d", area);
-                //  focus.select(".x.axis").call(xAxis);
+                /**
+                 * ufo.selectAll("path").style("fill", "blue")
+                 * x.domain(brush.empty() ? x2.domain() : brush.extent());
+                 * focus.select(".area").attr("d", area);
+                 * focus.select(".x.axis").call(xAxis);
+                 */
             }
 
 
@@ -223,16 +228,19 @@
      * Then we update paths and circles after zooming
      * we calculate the new projection and the new scale
      */
-    var zoom = d3.behavior.zoom()
-        .on("zoom", function () {
-            g.attr("transform", "translate(" +
-                d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
+    var zoomFn = function() {
+        g.attr("transform", "translate(" +
+            d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
 
-            g.selectAll("path")
-                .attr("d", path.projection(projection));
-            g.selectAll("circle")
-                .attr("r", calcScale());
-        });
+        g.selectAll("path")
+            .attr("d", path.projection(projection));
+        g.selectAll("circle")
+            .attr("r", calcScale());
+
+    }
+    var zoom = d3.behavior.zoom()
+        .scaleExtent([1, Number.POSITIVE_INFINITY])
+        .on("zoom", zoomFn);
 
     /* activates zooming behaviour */
     svg.call(zoom);
