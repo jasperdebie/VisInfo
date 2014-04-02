@@ -23,10 +23,12 @@ function zoomed() {
 
 
 var zoom = d3.behavior.zoom()
-    .scale(projection.scale() * 2 * Math.PI)
-    .scaleExtent([1 << 11, 1 << 14])
-    .translate([width, height ])
-    .on("zoom", zoomed);
+    .on("zoom",function() {
+        g.attr("transform","translate("+
+            d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+        g.selectAll("path")
+            .attr("d", path.projection(projection));
+    });
 
 
 ////how the worldmap has to be projected on the screen
@@ -69,13 +71,19 @@ d3.json("datasets/world.json", function(error, topology) { //readout the world i
             .data(data.features)
             .enter().append("path")
             .attr("d", path)
+            .attr("cx", function(d) {
+                return projection([d.lon, d.lat])[0];
+            })
+            .attr("cy", function(d) {
+                return projection([d.lon, d.lat])[1];
+            })
             .attr("r", 5)
             .style("fill", "red");
 
 
 
 
-        zoomed();
+
 
 
         //on bar
