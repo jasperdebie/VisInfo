@@ -107,8 +107,7 @@
                 .attr("r", scaleFactor);
 
             /* Creation of Brush */
-            var
-                margin = {top: 30, right: 10, bottom: 20, left: 40},
+            var margin = {top: 30, right: 10, bottom: 20, left: 40},
                 width = 960 - margin.left - margin.right,
                 height = 100 - margin.top - margin.bottom;
 
