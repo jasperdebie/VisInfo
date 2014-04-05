@@ -1,18 +1,95 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Ufo Spottings</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
-<div class="centered">
-    <div id="container"></div>
-    <div id="yearFilter"></div>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Ufo Spottings</a>
+        </div>
+
+      </div><!-- /.container-fluid -->
+</nav>
+<div class="row">
+    <div class="col-md-9">
+        <div class="centered">
+            <div id="container"></div>
+            <div id="yearFilter"></div>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="well well-lg">
+            <h4>Dots</h4>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="" checked>UFO Spottings
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">Bigfoot Spottings
+                </label>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">Abductions
+                </label>
+            </div>
+
+
+            <h4>Map</h4>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>Neutral
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">Population Density
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">Alcohol Consumption
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">IQ
+                </label>
+            </div>
+
+        </div>
+
+
+     </div>
+    <div class="col-md-1">
+    </div>
 </div>
 
 
 <script src="libraries/d3.min.js"></script>
 <script src="libraries/topojson.v1.min.js"></script>
 <script src="worldmap.js"></script>
+
 </body>
 </html>
