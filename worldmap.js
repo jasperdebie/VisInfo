@@ -84,7 +84,7 @@
     function setupBrush(data) {
         /* Creation of Brush */
         var margin = {top: 30, right: 10, bottom: 20, left: 10},
-            width = utils.getWidth() - margin.left - margin.right,
+            width = document.getElementById('container').offsetWidth ,
             height = 100 - margin.top - margin.bottom;
 
         /* Get the correct form for data */
@@ -113,7 +113,7 @@
             });
 
         var svg = d3.select("#yearFilter").append("svg")
-            .attr("width", width + margin.left + margin.right)
+            .attr("width", width + margin.left + margin.right )
             .attr("height", height + margin.top + margin.bottom);
 
         svg.append("defs").append("clipPath")
@@ -124,7 +124,7 @@
 
         var context = svg.append("g")
             .attr("class", "context")
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + 0 + "," + margin.top + ")");
 
         d3.json("datasets/brushData.json", function (error, brushdata) {
             x.domain(d3.extent(brushdata.map(function (d) {
