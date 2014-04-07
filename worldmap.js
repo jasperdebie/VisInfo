@@ -5,8 +5,13 @@
         .scaleExtent([1, Number.POSITIVE_INFINITY])
         .on("zoom", move);
 
+   /*
+    * Colors
+    */
+    var ufoColor = "red";
 
     var ufo;
+
     var utils;
     (function(utils) {
         utils.getWidth = function() { return document.getElementById('container').offsetWidth; };
@@ -137,7 +142,8 @@
             context.append("path")
                 .datum(brushdata)
                 .attr("class", "area")
-                .attr("d", area2);
+                .attr("d", area2)
+                .style("fill", ufoColor);
 
             context.append("g")
                 .attr("class", "x axis")
@@ -172,7 +178,7 @@
                 .attr("cy", function (d) {
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                 })
-                .style("fill", "blue")
+                .style("fill", ufoColor)
                 .attr("r", calcScale());
 
             console.log(new Date(brush.extent()[0]).getFullYear());
@@ -199,7 +205,7 @@
             .attr("cy", function (d) {
                 return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
             })
-            .style("fill", "red")
+            .style("fill", ufoColor)
             .attr("r", scaleFactor);
     }
 
