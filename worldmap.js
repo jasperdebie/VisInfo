@@ -172,6 +172,7 @@
                 }))
                 .enter()
                 .append("circle")
+                .attr("class","circles")
                 .attr("cx", function (d) {
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
                 })
@@ -199,6 +200,7 @@
             .data(data.features)
             .enter()
             .append("circle")
+
             .attr("cx", function (d) {
                 return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
             })

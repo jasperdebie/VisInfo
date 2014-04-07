@@ -1,9 +1,13 @@
 
 .area {
-
+  /*  opacity: 0.8; */
     clip-path: url(#clip);
 }
-
+/*
+.circles{
+    opacity: 0.8;
+}
+*/
 .axis path,
 .axis line {
     fill: none;
