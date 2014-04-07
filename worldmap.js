@@ -260,7 +260,7 @@
             });
 
 
-        //EXAMPLE: adding some capitals from external CSV file
+        //EXAMPLE: adding some capitals  rom external CSV file
         d3.csv("datasets/country-capitals.csv", function (err, capitals) {
 
             capitals.forEach(function (i) {
