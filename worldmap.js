@@ -1,4 +1,5 @@
-(function () {
+var worldmap = (function () {
+    var exports={};
     d3.select(window).on("resize", throttle);
 
     var zoom = d3.behavior.zoom()
@@ -360,4 +361,15 @@
         }
 
     }
+     /* filtering with checkboxes */
+    function checkboxFilteringUfo(ufoChecked){
+        (ufoChecked) ?
+            d3.json("datasets/UfoGeojson.json", function (error, data) {
+            drawUfos(data);
+        }) :
+            ufo.selectAll("circle").remove();
+    }
+
+    exports.checkboxFilteringUfo = checkboxFilteringUfo;
+    return exports;
 })();
