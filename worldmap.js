@@ -9,7 +9,6 @@ var worldmap = (function () {
    /*
     * Colors
     */
-    var ufoColor = "red";
 
     var ufo;
 
@@ -23,7 +22,6 @@ var worldmap = (function () {
     var scaleFactor = 1.5;
     /* Variable we set whenever we recalculate the scale of circles */
     var prevScale;
-
 
 
     /*
@@ -144,7 +142,7 @@ var worldmap = (function () {
                 .datum(brushdata)
                 .attr("class", "area")
                 .attr("d", area2)
-                .style("fill", ufoColor);
+                .attr("class", "ufoColor")
 
             context.append("g")
                 .attr("class", "x axis")
@@ -180,7 +178,7 @@ var worldmap = (function () {
                 .attr("cy", function (d) {
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                 })
-                .style("fill", ufoColor)
+                .attr("class", "UfoColor")
                 .attr("r", calcScale());
 
             console.log(new Date(brush.extent()[0]).getFullYear());
@@ -208,7 +206,7 @@ var worldmap = (function () {
             .attr("cy", function (d) {
                 return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
             })
-            .style("fill", ufoColor)
+            .attr("class", "ufoColor")
             .attr("r", scaleFactor);
     }
 
@@ -243,9 +241,8 @@ var worldmap = (function () {
             .attr("title", function (d, i) {
                 return d.properties.name;
             })
-            .style("fill", function (d, i) {
-                return "green";
-            });
+            .attr("class", "Blues")
+            ;
 
         //offsets for tooltips
         var offsetL = document.getElementById('container').offsetLeft + 20;
