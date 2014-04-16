@@ -10,7 +10,17 @@ var worldmap = (function () {
     * Colors
     */
 
+
+
+    // Setting color domains(intervals of values) for our map - amount of alcohol consumtion
+    var ext_color_domain = [.00, 2.5, 5.0, 7.5, 10];
+
+    var color = d3.scale.threshold()
+        .domain(ext_color_domain)
+        .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+
     var ufo;
+    var unemploymentData; // will hold the data of unemployement
 
     var utils;
     (function(utils) {
@@ -56,6 +66,9 @@ var worldmap = (function () {
     setup(width, height);
 
     function setup(width, height) {
+
+
+
         projection = d3.geo.mercator()
             .translate([(width / 2), (height / 2)])
             .scale(width / 2 / Math.PI);
@@ -69,21 +82,142 @@ var worldmap = (function () {
             .on("click", click);
 
         g = svg.append("g");
+
+        // first load everything and than draw
+        queue()
+            .defer(d3.json, "datasets/world-topo-min.json")
+            .defer(d3.csv, "datasets/Alcohol_Consumption_Per_Country.csv")
+            .await(ready);
+
+
+
+        //Adding legend for our Choropleth
+        var legend_labels = ["< .00", "2.5+", "5.0+", "7.0+", "10+"]
+
+        var legend = svg.selectAll("g.legend")
+            .data(ext_color_domain)
+            .enter().append("g")
+            .attr("class", "legend");
+
+        var ls_w = 20, ls_h = 20;
+
+        legend.append("rect")
+            .attr("x", 20)
+            .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h;})
+            .attr("width", ls_w)
+            .attr("height", ls_h)
+            .style("fill", function(d, i) { return color(d); })
+            .style("opacity", 0.8);
+
+        legend.append("text")
+            .attr("x", 50)
+            .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4;})
+            .text(function(d, i){ return legend_labels[i]; });
+
     }
 
-    d3.json("datasets/world-topo-min.json", function (error, world) {
+    function ready (error, world, liters) {
 
+        var rateById = {}; // will hold the liters per alcohol adult consumption
+
+        liters.forEach(function(d) {
+            rateById[d.Location] = +d["Liters per capita pure alcohol adult consumption"]; });
+
+
+        console.log("rate", rateById)
         var countries = topojson.feature(world, world.objects.countries).features;
         topo = countries;
-        draw(topo);
 
-        d3.json("datasets/UfoGeojson.json", function (error, data) {
-            drawUfos(data);
-            setupBrush(data);
+        svg.append("path")
+            .datum(graticule)
+            .attr("class", "graticule")
+            .attr("d", path);
+
+
+        g.append("path")
+            .datum({type: "LineString", coordinates: [
+                [-180, 0],
+                [-90, 0],
+                [0, 0],
+                [90, 0],
+                [180, 0]
+            ]})
+            .attr("class", "equator")
+            .attr("d", path);
+
+
+        var country = g.selectAll(".country").data(topo);
+
+        country.enter().insert("path")
+            .attr("class", "country")
+            .attr("d", path)
+            .attr("id", function (d, i) {
+                return d.id;
+            })
+            .attr("title", function (d, i) {
+                return d.properties.name ;
+            })
+            .style("fill", function(d) {
+
+                var rate = rateById[d.properties.name];
+                if(rate!==undefined)
+                    return color(rate)
+                else
+                    return "White"
+
+            })
+
+        ;
+
+        //offsets for tooltips
+        var offsetL = document.getElementById('container').offsetLeft + 20;
+        var offsetT = document.getElementById('container').offsetTop + 10;
+
+
+
+        //tooltips
+        country
+            .on("mousemove", function (d, i) {
+
+                var mouse = d3.mouse(svg.node()).map(function (d) {
+                    return parseInt(d);
+                });
+
+                var amountOfLiters = rateById[d.properties.name];
+                if(amountOfLiters==undefined)  // if it is not defined this is the default
+                    rateById[d.properties.name] = "Unknown";
+
+                tooltip.classed("hidden", false)
+                    .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
+                    .html(d.properties.name + "\n - Amount of Liters: " +rateById[d.properties.name]);
+
+            })
+            .on("mouseout", function (d, i) {
+                tooltip.classed("hidden", true);
+            })
+        ;
+
+
+        //EXAMPLE: adding some capitals  rom external CSV file
+        d3.csv("datasets/country-capitals.csv", function (err, capitals) {
+
+            capitals.forEach(function (i) {
+                addpoint(i.CapitalLongitude, i.CapitalLatitude, i.CapitalName);
+            });
+
         });
 
+    };
 
+
+
+    //draw brush and ufo
+    d3.json("datasets/UfoGeojson.json", function (error, data) {
+        drawUfos(data);
+        setupBrush(data);
     });
+
+
 
     function setupBrush(data) {
         /* Creation of Brush */
@@ -193,6 +327,10 @@ var worldmap = (function () {
         }
     }
 
+
+
+
+
     function drawUfos(data) {
         ufo = g.append("g")
         ufo.selectAll("circle")
@@ -210,72 +348,6 @@ var worldmap = (function () {
             .attr("r", scaleFactor);
     }
 
-    function draw(topo) {
-
-        svg.append("path")
-            .datum(graticule)
-            .attr("class", "graticule")
-            .attr("d", path);
-
-
-        g.append("path")
-            .datum({type: "LineString", coordinates: [
-                [-180, 0],
-                [-90, 0],
-                [0, 0],
-                [90, 0],
-                [180, 0]
-            ]})
-            .attr("class", "equator")
-            .attr("d", path);
-
-
-        var country = g.selectAll(".country").data(topo);
-
-        country.enter().insert("path")
-            .attr("class", "country")
-            .attr("d", path)
-            .attr("id", function (d, i) {
-                return d.id;
-            })
-            .attr("title", function (d, i) {
-                return d.properties.name;
-            })
-            .attr("class", "Blues")
-            ;
-
-        //offsets for tooltips
-        var offsetL = document.getElementById('container').offsetLeft + 20;
-        var offsetT = document.getElementById('container').offsetTop + 10;
-
-        //tooltips
-        country
-            .on("mousemove", function (d, i) {
-
-                var mouse = d3.mouse(svg.node()).map(function (d) {
-                    return parseInt(d);
-                });
-
-                tooltip.classed("hidden", false)
-                    .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                    .html(d.properties.name);
-
-            })
-            .on("mouseout", function (d, i) {
-                tooltip.classed("hidden", true);
-            });
-
-
-        //EXAMPLE: adding some capitals  rom external CSV file
-        d3.csv("datasets/country-capitals.csv", function (err, capitals) {
-
-            capitals.forEach(function (i) {
-                addpoint(i.CapitalLongitude, i.CapitalLatitude, i.CapitalName);
-            });
-
-        });
-
-    }
 
 
     function redraw() {
