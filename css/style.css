@@ -63,3 +63,11 @@ div.tooltip {
 .centered{
     text-align: center;
 }
+
+.ufoColor{
+fill:rgb(33,113,181)
+}
+
+.legend {
+    font-size: 12px;
+}

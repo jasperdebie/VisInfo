@@ -83,9 +83,10 @@
             .attr("class", "wordline")
             .datum(topojson.feature(topology, topology.objects.countries))
             .attr("d", path)
-            .attr("fill", "green")
+            .attr("class", "Blues")
             .attr("stroke", "white")
             .attr("stroke-width", 0.25);
+
 
         /*
          * Load and display UFO spottings on the world map
@@ -104,7 +105,7 @@
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                 })
                 .style("fill", "red")
-                .attr("r", scaleFactor);
+            .attr("r", scaleFactor);
 
             /* Creation of Brush */
             var margin = {top: 30, right: 10, bottom: 20, left: 40},
