@@ -14,6 +14,8 @@ var worldmap = (function () {
 
     // Setting color domains(intervals of values) for our map - amount of alcohol consumtion
     var ext_color_domain = [.00, 2.5, 5.0, 7.5, 10];
+    var ext_color_domain2 = [.00, 10, 50, 100, 200];
+    var sort = 2
 
     var color = d3.scale.threshold()
         .domain(ext_color_domain)
@@ -84,15 +86,27 @@ var worldmap = (function () {
         g = svg.append("g");
 
         // first load everything and than draw
+
+	if(sort == 1)
+	
         queue()
             .defer(d3.json, "datasets/world-topo-min.json")
             .defer(d3.csv, "datasets/Alcohol_Consumption_Per_Country.csv")
+	    //.defer(d3.csv, "datasets/populationdensity.csv")
+            .await(ready)
+	else
+        queue()
+            .defer(d3.json, "datasets/world-topo-min.json")
+            //.defer(d3.csv, "datasets/Alcohol_Consumption_Per_Country.csv")
+	    .defer(d3.csv, "datasets/populationdensity.csv")
             .await(ready);
-
 
 
         //Adding legend for our Choropleth
         var legend_labels = ["< .00", "2.5+", "5.0+", "7.0+", "10+"]
+
+  	var legend_labels2 = ["< 0.00", "10", "50", "100", "200"]
+	
 
         var legend = svg.selectAll("g.legend")
             .data(ext_color_domain)
@@ -112,7 +126,10 @@ var worldmap = (function () {
         legend.append("text")
             .attr("x", 50)
             .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4;})
-            .text(function(d, i){ return legend_labels[i]; });
+            .text(function(d, i){ if (sort == 1 )
+					return legend_labels[i]
+				else 
+					return legend_labels2[i] });
 
     }
 
@@ -120,8 +137,10 @@ var worldmap = (function () {
 
         var rateById = {}; // will hold the liters per alcohol adult consumption
 
-        liters.forEach(function(d) {
-            rateById[d.Location] = +d["Liters per capita pure alcohol adult consumption"]; });
+        if(sort == 1)
+		liters.forEach(function(d) {rateById[d.Location] = +d["Liters per capita pure alcohol adult consumption"]})
+	else
+		liters.forEach(function(d) {rateById[d.Location] = +d["2012"] });
 
 
         console.log("rate", rateById)
@@ -160,6 +179,7 @@ var worldmap = (function () {
             .style("fill", function(d) {
 
                 var rate = rateById[d.properties.name];
+
                 if(rate!==undefined)
                     return color(rate)
                 else
