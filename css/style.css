@@ -1,8 +1,9 @@
 
 .area {
-  /*  opacity: 0.8; */
+    /*  opacity: 0.8; */
     clip-path: url(#clip);
 }
+
 /*
 .circles{
     opacity: 0.8;
@@ -21,25 +22,29 @@
     shape-rendering: crispEdges;
 }
 
-.country:hover{
+.country:hover {
     stroke: #fff;
     stroke-width: 1.5px;
 }
-.text{
-    font-size:10px;
-    text-transform:capitalize;
+
+.text {
+    font-size: 10px;
+    text-transform: capitalize;
 }
+
 #container {
-    margin:10px 10%;
-    border:2px solid #000;
+    margin: 10px 10%;
+    border: 2px solid #000;
     border-radius: 5px;
-    height:100%;
-    overflow:hidden;
+    height: 100%;
+    overflow: hidden;
     background: #F0F8FF;
 }
+
 .hidden {
     display: none;
 }
+
 div.tooltip {
     color: #222;
     background: #fff;
@@ -50,22 +55,29 @@ div.tooltip {
     opacity: 0.9;
     position: absolute;
 }
+
 .graticule {
     fill: none;
     stroke: #bbb;
     stroke-width: .5px;
     stroke-opacity: .5;
 }
+
 .equator {
     stroke: #ccc;
     stroke-width: 1px;
 }
-.centered{
+
+.centered {
     text-align: center;
 }
 
-.ufoColor{
-fill:rgb(33,113,181)
+.ufoColor {
+    fill: rgb(33, 113, 181);
+}
+
+.bigfootColor {
+    fill: red;
 }
 
 .legend {

@@ -51,7 +51,8 @@
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="" id="chkBigfootSpotting" onclick="chkFilter()">Bigfoot Spottings
+                    <input type="checkbox" value="" id="chkBigfootSpotting" onclick="chkFilterBigfoot()">Bigfoot
+                    Spottings
                 </label>
             </div>
             <div class="checkbox">
@@ -101,9 +102,11 @@
 
 <script type=text/javascript>
     function chkFilterUfo() {
-       worldmap.checkboxFilteringUfo(document.getElementById('chkUfoSpotting').checked);
+        worldmap.checkboxFilteringUfo(document.getElementById('chkUfoSpotting').checked);
     }
-
+    function chkFilterBigfoot() {
+        worldmap.checkboxFilteringBigfood(document.getElementById('chkBigfootSpotting').checked);
+    }
 </script>
 
 </body>
