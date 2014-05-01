@@ -63,7 +63,14 @@ for (j = 0; j < file.features.length; j++) {
     amounts[year] = amounts[year] + 1;
 }
 
-fs.writeFileSync("bigfootbrush.json", JSON.stringify(amounts, undefined, 2));
+var a;
+var result = [];
+for (j= min; j < max + 1; j ++) {
+    a = amounts[j];
+    result.push({"year": j, "amount": a});
+}
+
+fs.writeFileSync("bigfootbrush.json", JSON.stringify(result, undefined, 2));
 fs.writeFileSync("bigfootfiltered.geojson", JSON.stringify(file, undefined, 2));
 
 
