@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <title>Ufo Spottings</title>
+<script data-main="main" src="js/jquery-2.1.0.min.js"></script>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -50,7 +51,8 @@
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="" id="chkBigfootSpotting" onclick="chkFilter()">Bigfoot Spottings
+                    <input type="checkbox" value="" id="chkBigfootSpotting" onclick="chkFilterBigfoot()">Bigfoot
+                    Spottings
                 </label>
             </div>
             <div class="checkbox">
@@ -100,9 +102,11 @@
 
 <script type=text/javascript>
     function chkFilterUfo() {
-       worldmap.checkboxFilteringUfo(document.getElementById('chkUfoSpotting').checked);
+        worldmap.checkboxFilteringUfo(document.getElementById('chkUfoSpotting').checked);
     }
-
+    function chkFilterBigfoot() {
+        worldmap.checkboxFilteringBigfood(document.getElementById('chkBigfootSpotting').checked);
+    }
 </script>
 
 </body>

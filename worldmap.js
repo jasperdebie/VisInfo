@@ -1,30 +1,34 @@
 var worldmap = (function () {
-    var exports={};
+    var exports = {};
     d3.select(window).on("resize", throttle);
 
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, Number.POSITIVE_INFINITY])
         .on("zoom", move);
 
-   /*
-    * Colors
-    */
-
+    /*
+     * Colors
+     */
 
 
     // Setting color domains(intervals of values) for our map - amount of alcohol consumtion
     var ext_color_domain = [.00, 2.5, 5.0, 7.5, 10];
+    var ext_color_domain2 = [.00, 10, 50, 100, 200];
+    var sort = 2
 
     var color = d3.scale.threshold()
         .domain(ext_color_domain)
         .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
     var ufo;
+    var bigfoot;
     var unemploymentData; // will hold the data of unemployement
 
     var utils;
-    (function(utils) {
-        utils.getWidth = function() { return document.getElementById('container').offsetWidth; };
+    (function (utils) {
+        utils.getWidth = function () {
+            return document.getElementById('container').offsetWidth;
+        };
 
     })(utils || (utils = {}));
 
@@ -68,7 +72,6 @@ var worldmap = (function () {
     function setup(width, height) {
 
 
-
         projection = d3.geo.mercator()
             .translate([(width / 2), (height / 2)])
             .scale(width / 2 / Math.PI);
@@ -84,15 +87,27 @@ var worldmap = (function () {
         g = svg.append("g");
 
         // first load everything and than draw
-        queue()
-            .defer(d3.json, "datasets/world-topo-min.json")
-            .defer(d3.csv, "datasets/Alcohol_Consumption_Per_Country.csv")
-            .await(ready);
 
+        if (sort == 1)
+
+            queue()
+                .defer(d3.json, "datasets/world-topo-min.json")
+                .defer(d3.csv, "datasets/Alcohol_Consumption_Per_Country.csv")
+                //.defer(d3.csv, "datasets/populationdensity.csv")
+                .await(ready)
+        else
+            queue()
+                .defer(d3.json, "datasets/world-topo-min.json")
+                //.defer(d3.csv, "datasets/Alcohol_Consumption_Per_Country.csv")
+                .defer(d3.csv, "datasets/populationdensity.csv")
+                .await(ready);
 
 
         //Adding legend for our Choropleth
         var legend_labels = ["< .00", "2.5+", "5.0+", "7.0+", "10+"]
+
+        var legend_labels2 = ["< 0.00", "10", "50", "100", "200"]
+
 
         var legend = svg.selectAll("g.legend")
             .data(ext_color_domain)
@@ -103,25 +118,42 @@ var worldmap = (function () {
 
         legend.append("rect")
             .attr("x", 20)
-            .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h;})
+            .attr("y", function (d, i) {
+                return height - (i * ls_h) - 2 * ls_h;
+            })
             .attr("width", ls_w)
             .attr("height", ls_h)
-            .style("fill", function(d, i) { return color(d); })
+            .style("fill", function (d, i) {
+                return color(d);
+            })
             .style("opacity", 0.8);
 
         legend.append("text")
             .attr("x", 50)
-            .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4;})
-            .text(function(d, i){ return legend_labels[i]; });
+            .attr("y", function (d, i) {
+                return height - (i * ls_h) - ls_h - 4;
+            })
+            .text(function (d, i) {
+                if (sort == 1)
+                    return legend_labels[i]
+                else
+                    return legend_labels2[i]
+            });
 
     }
 
-    function ready (error, world, liters) {
+    function ready(error, world, liters) {
 
         var rateById = {}; // will hold the liters per alcohol adult consumption
 
-        liters.forEach(function(d) {
-            rateById[d.Location] = +d["Liters per capita pure alcohol adult consumption"]; });
+        if (sort == 1)
+            liters.forEach(function (d) {
+                rateById[d.Location] = +d["Liters per capita pure alcohol adult consumption"]
+            })
+        else
+            liters.forEach(function (d) {
+                rateById[d.Location] = +d["2012"]
+            });
 
 
         console.log("rate", rateById)
@@ -155,12 +187,13 @@ var worldmap = (function () {
                 return d.id;
             })
             .attr("title", function (d, i) {
-                return d.properties.name ;
+                return d.properties.name;
             })
-            .style("fill", function(d) {
+            .style("fill", function (d) {
 
                 var rate = rateById[d.properties.name];
-                if(rate!==undefined)
+
+                if (rate !== undefined)
                     return color(rate)
                 else
                     return "White"
@@ -174,7 +207,6 @@ var worldmap = (function () {
         var offsetT = document.getElementById('container').offsetTop + 10;
 
 
-
         //tooltips
         country
             .on("mousemove", function (d, i) {
@@ -184,12 +216,12 @@ var worldmap = (function () {
                 });
 
                 var amountOfLiters = rateById[d.properties.name];
-                if(amountOfLiters==undefined)  // if it is not defined this is the default
+                if (amountOfLiters == undefined)  // if it is not defined this is the default
                     rateById[d.properties.name] = "Unknown";
 
                 tooltip.classed("hidden", false)
                     .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                    .html(d.properties.name + "\n - Amount of Liters: " +rateById[d.properties.name]);
+                    .html(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
 
             })
             .on("mouseout", function (d, i) {
@@ -210,13 +242,15 @@ var worldmap = (function () {
     };
 
 
-
     //draw brush and ufo
     d3.json("datasets/UfoGeojson.json", function (error, data) {
         drawUfos(data);
         setupBrush(data);
     });
-
+    d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
+       // drawBigfoot(data);
+        //setupBrush(data);
+    });
 
 
     function setupBrush(data) {
@@ -251,7 +285,7 @@ var worldmap = (function () {
             });
 
         var svg = d3.select("#yearFilter").append("svg")
-            .attr("width", width + margin.left + margin.right )
+            .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom);
 
         svg.append("defs").append("clipPath")
@@ -305,7 +339,7 @@ var worldmap = (function () {
                 }))
                 .enter()
                 .append("circle")
-                .attr("class","circles")
+                .attr("class", "circles")
                 .attr("cx", function (d) {
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
                 })
@@ -328,16 +362,12 @@ var worldmap = (function () {
     }
 
 
-
-
-
     function drawUfos(data) {
         ufo = g.append("g")
         ufo.selectAll("circle")
             .data(data.features)
             .enter()
             .append("circle")
-
             .attr("cx", function (d) {
                 return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
             })
@@ -348,6 +378,21 @@ var worldmap = (function () {
             .attr("r", scaleFactor);
     }
 
+    function drawBigfoot(data) {
+        bigfoot = g.append("g")
+        bigfoot.selectAll("circle")
+            .data(data.features)
+            .enter()
+            .append("circle")
+            .attr("cx", function (d) {
+                return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+            })
+            .attr("cy", function (d) {
+                return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+            })
+            .attr("class", "bigfootColor")
+            .attr("r", scaleFactor);
+    }
 
 
     function redraw() {
@@ -430,15 +475,25 @@ var worldmap = (function () {
         }
 
     }
-     /* filtering with checkboxes */
-    function checkboxFilteringUfo(ufoChecked){
+
+    /* filtering with checkboxes */
+    function checkboxFilteringUfo(ufoChecked) {
         (ufoChecked) ?
             d3.json("datasets/UfoGeojson.json", function (error, data) {
-            drawUfos(data);
-        }) :
+                drawUfos(data);
+            }) :
             ufo.selectAll("circle").remove();
     }
 
+    function checkboxFilteringBigfood(bigfoodChecked) {
+        (bigfoodChecked) ?
+            d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
+                drawBigfoot(data);
+            }) :
+            bigfoot.selectAll("circle").remove();
+    }
+
     exports.checkboxFilteringUfo = checkboxFilteringUfo;
+    exports.checkboxFilteringBigfood = checkboxFilteringBigfood;
     return exports;
 })();
