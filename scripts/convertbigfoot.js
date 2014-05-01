@@ -25,8 +25,8 @@ bad = 0;
 for (var i = 0; i < file.features.length; i ++) {
     item = file.features[i];
     dateField = item.properties.Name;
-    year = strToDate(dateField)
-    if (year) {
+    year = strToDate(dateField);
+    if (year && year >= 1900) {
         good++;
         item.properties.year = year;
     }
@@ -35,6 +35,35 @@ for (var i = 0; i < file.features.length; i ++) {
     }
 }
 
+file.features = file.features.filter(function(e) { return e;});
+
+
+var max = Number.MIN_VALUE;
+var min = Number.MAX_VALUE;
+for (var j = 0; j < file.features.length; j ++) {
+    item = file.features[j];
+    year = parseInt(item.properties.year);
+
+    if (year < min) {
+        min = year;
+    }
+    if (year > max) {
+        max = year;
+    }
+}
+
+var amounts = {};
+for (j= min; j < max + 1; j ++) {
+    amounts[j] = 0;
+}
+
+for (j = 0; j < file.features.length; j++) {
+    item = file.features[j];
+    year = item.properties.year;
+    amounts[year] = amounts[year] + 1;
+}
+
+fs.writeFileSync("bigfootbrush.json", JSON.stringify(amounts, undefined, 2));
 fs.writeFileSync("bigfootfiltered.geojson", JSON.stringify(file, undefined, 2));
 
 
