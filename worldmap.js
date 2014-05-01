@@ -247,6 +247,7 @@ var worldmap = (function () {
         var offsetT = document.getElementById('container').offsetTop + 10;
 
 
+        var tooltipsVisible = false;
         //tooltips
         country.on("mousemove", function (d, i) {
 
@@ -259,20 +260,38 @@ var worldmap = (function () {
                     rateById[d.properties.name] = "Unknown";
                 }
 
-                tooltip.classed("hidden", false)
-                    .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                    .html(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
+
+                $("#extraData").text(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
 
             })
             .on("mouseout", function (d, i) {
                 tooltip.classed("hidden", true);
-        });
+                $("#extraData").text("");
+            })
+            .on("click", function (d, i) {
+                if(tooltipsVisible==false)
+                {
+                    var mouse = d3.mouse(svg.node()).map(function (d) {
+                        return parseInt(d);
+                    });
+
+                    var amountOfLiters = rateById[d.properties.name];
+                    if (amountOfLiters == undefined)  // if it is not defined this is the default
+                        rateById[d.properties.name] = "Unknown";
+
+                    tooltip.classed("hidden", false)
+                        .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
+                        .html(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
+                    tooltipsVisible=true;
+                }
+                else{
+                    tooltip.classed("hidden",true);
+                    tooltipsVisible=false;
+                }
 
 
-
-
+            });
     }
-
 
     //draw brush and ufo
     d3.json("datasets/UfoGeojson.json", function (error, data) {
@@ -287,15 +306,15 @@ var worldmap = (function () {
 
     function setupBrush(data) {
         /* Creation of Brush */
-        var margin = {top: 30, right: 10, bottom: 20, left: 10},
-            width = document.getElementById('container').offsetWidth ,
+        var margin = {top: 30, right: 15, bottom: 20, left: 15},
+            width = document.getElementById('container').offsetWidth -4,
             height = 100 - margin.top - margin.bottom;
 
         /* Get the correct form for data */
         var parseDate = d3.time.format("%Y").parse;
 
 
-        var x = d3.time.scale().range([0, width]), // type scale
+        var x = d3.time.scale().range([0, width- ( margin.left + margin.right  )]), // type scale
             y = d3.scale.linear().range([height, 0]);
 
         /* Position of brushbar */
@@ -316,19 +335,20 @@ var worldmap = (function () {
                 return y(d.amount);
             });
 
-        var svg = d3.select("#yearFilter").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom);
+        var svg = d3.select("#brush").append("svg")
+            .attr("width", width  )
+            .attr("height", height + margin.top + margin.bottom)
+                .attr("class", "brushelement");
 
         svg.append("defs").append("clipPath")
             .attr("id", "clip")
             .append("rect")
-            .attr("width", width)
+            .attr("width", width - ( margin.left + margin.right +40 ))
             .attr("height", height);
 
         var context = svg.append("g")
             .attr("class", "context")
-            .attr("transform", "translate(" + 0 + "," + margin.top + ")");
+            .attr("transform", "translate(" + 20 + "," + margin.top + ")");
 
         d3.json("datasets/brushData.json", function (error, brushdata) {
             x.domain(d3.extent(brushdata.map(function (d) {
@@ -346,7 +366,34 @@ var worldmap = (function () {
 
             context.append("g")
                 .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
+                .attr("transform", "translate(00," + height + ")")
+                .call(xAxis);
+
+            context.append("g")
+                .attr("class", "x brush")
+                .call(brush)
+                .selectAll("rect")
+                .attr("y", -6)
+                .attr("height", height + 7);
+        });
+
+        d3.json("datasets/bigfootbrush.json", function (error, brushdata) {
+            x.domain(d3.extent(brushdata.map(function (d) {
+                return parseDate(d.year);
+            })));
+            y.domain([0, d3.max(brushdata.map(function (d) {
+                return d.amount;
+            }))]);
+
+            context.append("path")
+                .datum(brushdata)
+                .attr("class", "area")
+                .attr("d", area2)
+                .attr("class", "bigfootColor");
+
+            context.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(00," + height + ")")
                 .call(xAxis);
 
             context.append("g")
@@ -361,7 +408,7 @@ var worldmap = (function () {
             var begindatum = parseInt(new Date(brush.extent()[0]).getFullYear());
             var einddatum = parseInt(new Date(brush.extent()[1]).getFullYear());
 
-
+            if($(chkUfoSpotting).prop('checked')){
             ufo.selectAll("circle").remove();
             ufo.selectAll("circle")
                 .data(data.features.filter(function (d, i) {
@@ -380,6 +427,7 @@ var worldmap = (function () {
                 })
                 .attr("class", "UfoColor")
                 .attr("r", calcScale());
+            }
 
             console.log(new Date(brush.extent()[0]).getFullYear());
             console.log(new Date(brush.extent()[1]).getFullYear());
@@ -390,8 +438,9 @@ var worldmap = (function () {
              * focus.select(".area").attr("d", area);
              * focus.select(".x.axis").call(xAxis);
              */
+            }
         }
-    }
+
 
 
     function drawUfos(data) {

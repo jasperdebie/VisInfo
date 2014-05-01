@@ -34,7 +34,7 @@
 
 #container {
     margin: 10px 10%;
-    border: 2px solid #000;
+    border: 2px solid grey;
     border-radius: 5px;
     height: 100%;
     overflow: hidden;
@@ -74,12 +74,23 @@ div.tooltip {
 
 .ufoColor {
     fill: rgb(33, 113, 181);
+    opacity: 0.70;
 }
 
 .bigfootColor {
     fill: red;
+    opacity: .70;
 }
 
 .legend {
     font-size: 12px;
+}
+
+.brushelement {
+    background-color: #F2F5F0;
+    margin: 10px 10%;
+    border: 2px solid grey;
+    border-radius: 5px;
+    height: 100%;
+    overflow: hidden;
 }

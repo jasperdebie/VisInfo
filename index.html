@@ -10,7 +10,7 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/style.css">
+
 </head>
 <body>
 
@@ -35,79 +35,92 @@
     <div class="col-md-9">
         <div class="centered">
             <div id="container"></div>
-            <div id="yearFilter"></div>
-        </div>
+            <div id="yearFilter" style="overflow: visible;">
+                <div id="brush" class="centered" style="overflow: visible;">
 
+                </div>
+            </div>
+
+        </div>
     </div>
+
 
     <div class="col-md-2">
-        <div class="well well-lg">
-            <h4>Dots</h4>
+        <div class="row">
+            <div class="well well-lg">
+                <h4>Dots</h4>
 
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="" checked id="chkUfoSpotting" onclick="chkFilterUfo()">UFO Spottings
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="" id="chkBigfootSpotting" onclick="chkFilterBigfoot()">Bigfoot
-                    Spottings
-                </label>
-            </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" value="" id="chkAbduction" onclick="chkFilter()">Abductions
-                </label>
-            </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="" checked id="chkUfoSpotting" onclick="chkFilterUfo()">UFO Spottings
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="" id="chkBigfootSpotting" onclick="chkFilterBigfoot()">Bigfoot
+                        Spottings
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" value="" id="chkAbduction" onclick="chkFilter()">Abductions
+                    </label>
+                </div>
 
 
-            <h4>Map</h4>
+                <h4>Map</h4>
 
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>Neutral
-                </label>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>Neutral
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">Population Density
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="3">Alcohol Consumption
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="optionsRadios" id="optionsRadios4" value="4">IQ
+                    </label>
+                </div>
+
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">Population Density
-                </label>
+        </div>
+        <div class="row">
+            <div class="well well-lg">
+                <h4>Extra Info</h4>
+                <p id="extraData"></p>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="3">Alcohol Consumption
-                </label>
-            </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios4" value="4">IQ
-                </label>
-            </div>
+
 
         </div>
 
-
+        <div class="col-md-1">
+        </div>
     </div>
-    <div class="col-md-1">
-    </div>
-</div>
 
 
-<script src="libraries/d3.min.js"></script>
-<script src="libraries/topojson.v1.min.js"></script>
-<script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="libraries/d3.min.js"></script>
+    <script src="libraries/topojson.v1.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
 
-<script src="worldmap.js"></script>
+    <script src="worldmap.js"></script>
 
-<script type=text/javascript>
-    function chkFilterUfo() {
-        worldmap.checkboxFilteringUfo(document.getElementById('chkUfoSpotting').checked);
-    }
-    function chkFilterBigfoot() {
-        worldmap.checkboxFilteringBigfood(document.getElementById('chkBigfootSpotting').checked);
-    }
-</script>
-
+    <script type=text/javascript>
+        function chkFilterUfo() {
+            worldmap.checkboxFilteringUfo(document.getElementById('chkUfoSpotting').checked);
+        }
+        function chkFilterBigfoot() {
+            worldmap.checkboxFilteringBigfood(document.getElementById('chkBigfootSpotting').checked);
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </body>
 </html>
