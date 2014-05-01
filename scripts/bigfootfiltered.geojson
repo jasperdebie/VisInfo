@@ -1638,22 +1638,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -87.867311,
-          31.318073
-        ]
-      },
-      "properties": {
-        "Description": "http://users.isp.com//bigfoot/reports/RFPreport4.htm",
-        "Z Coordinate": "0.0",
-        "Name": "1944-01Win ~4mi",
-        "year": 1944
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -93.241847,
           34.553665
         ]
@@ -5222,22 +5206,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -90.760771,
-          39.995384
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_article.asp?id=424",
-        "Z Coordinate": "0.0",
-        "Name": "1922-02-01 ~5mi",
-        "year": 1922
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -88.991649,
           39.878955
         ]
@@ -5455,38 +5423,6 @@
         "Z Coordinate": "0.0",
         "Name": "1980-06-17",
         "year": 1980
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -79.723984,
-          47.434158
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_article.asp?id=62",
-        "Z Coordinate": "0.0",
-        "Name": "1923-07-23",
-        "year": 1923
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -79.774631,
-          47.399826
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_article.asp?id=63",
-        "Z Coordinate": "0.0",
-        "Name": "1946-08-16",
-        "year": 1946
       }
     },
     {
@@ -5759,22 +5695,6 @@
         "Z Coordinate": "0.0",
         "Name": "1992-09-25 ~5mi",
         "year": 1992
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.085922,
-          46.207809
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_article.asp?id=91",
-        "Z Coordinate": "0.0",
-        "Name": "1924-07-??",
-        "year": 1924
       }
     },
     {
@@ -8191,22 +8111,6 @@
         "Z Coordinate": "0.0",
         "Name": "2003-11-17",
         "year": 2003
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -124.285587,
-          50.51033
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=1091",
-        "Z Coordinate": "0.0",
-        "Name": "1924-07-?? ~10mi",
-        "year": 1924
       }
     },
     {
@@ -13350,22 +13254,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -99.806716,
-          34.746666
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=1303",
-        "Z Coordinate": "0.0",
-        "Name": "1942-04Spr",
-        "year": 1942
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -93.595195,
           36.684809
         ]
@@ -16310,22 +16198,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -87.318955,
-          38.001065
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=14336",
-        "Z Coordinate": "0.0",
-        "Name": "1937-08-?? ~2mi",
-        "year": 1937
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -79.824455,
           46.94767
         ]
@@ -16383,22 +16255,6 @@
         "Z Coordinate": "0.0",
         "Name": "2003-07-??",
         "year": 2003
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -78.288668,
-          40.959778
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=14358",
-        "Z Coordinate": "0.0",
-        "Name": "1921-01-1? ~2mi",
-        "year": 1921
       }
     },
     {
@@ -19590,22 +19446,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -111.588679,
-          34.187651
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=1606",
-        "Z Coordinate": "0.0",
-        "Name": "1944-??-??",
-        "year": 1944
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -81.851163,
           28.002434
         ]
@@ -20950,22 +20790,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -121.176656,
-          46.319733
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=1689",
-        "Z Coordinate": "0.0",
-        "Name": "1941-10Aut ~15mi",
-        "year": 1941
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -81.147242,
           37.283521
         ]
@@ -21263,22 +21087,6 @@
         "Z Coordinate": "0.0",
         "Name": "1975-05-25 ~2mi",
         "year": 1975
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -123.866343,
-          47.964077
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=1723",
-        "Z Coordinate": "0.0",
-        "Name": "1948-??-?? ~5mi",
-        "year": 1948
       }
     },
     {
@@ -24854,22 +24662,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -96.719182,
-          32.44297
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=2395",
-        "Z Coordinate": "0.0",
-        "Name": "1938-??-?? ~15mi",
-        "year": 1938
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -96.599759,
           32.219446
         ]
@@ -25622,22 +25414,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -95.747145,
-          31.464243
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=2477",
-        "Z Coordinate": "0.0",
-        "Name": "1930-10Aut ~15mi",
-        "year": 1930
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -123.438634,
           40.621948
         ]
@@ -25663,22 +25439,6 @@
         "Z Coordinate": "0.0",
         "Name": "2000-05-12 ~5mi",
         "year": 2000
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -91.916728,
-          34.765034
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=2494",
-        "Z Coordinate": "0.0",
-        "Name": "1943-10-?? ~10mi",
-        "year": 1943
       }
     },
     {
@@ -26991,22 +26751,6 @@
         "Z Coordinate": "0.0",
         "Name": "1988-10Aut ~4mi",
         "year": 1988
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.878368,
-          41.771564
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=2896",
-        "Z Coordinate": "0.0",
-        "Name": "1944-08-??",
-        "year": 1944
       }
     },
     {
@@ -32582,22 +32326,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -88.267029,
-          35.931816
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=4543",
-        "Z Coordinate": "0.0",
-        "Name": "1905-??-??05 ~ 10mi",
-        "year": 1905
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -122.275353,
           42.472512
         ]
@@ -33375,22 +33103,6 @@
         "Z Coordinate": "0.0",
         "Name": "1977-10Aut ~5mi",
         "year": 1977
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -81.746851,
-          29.678729
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=4795",
-        "Z Coordinate": "0.0",
-        "Name": "1948-07Sum",
-        "year": 1948
       }
     },
     {
@@ -35366,22 +35078,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.285166,
-          40.607046
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=5333",
-        "Z Coordinate": "0.0",
-        "Name": "1943-08-?? ~20mi",
-        "year": 1943
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -92.914855,
           35.806375
         ]
@@ -36031,22 +35727,6 @@
         "Z Coordinate": "0.0",
         "Name": "1977-07Sum",
         "year": 1977
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -106.487512,
-          40.746231
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=5641",
-        "Z Coordinate": "0.0",
-        "Name": "1923-07-15 ~15mi",
-        "year": 1923
       }
     },
     {
@@ -40550,22 +40230,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -86.516377,
-          34.606483
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=7235",
-        "Z Coordinate": "0.0",
-        "Name": "1949-07Sum ~2mi",
-        "year": 1949
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -93.299201,
           31.158616
         ]
@@ -43526,22 +43190,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -83.748566,
-          42.763767
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=807",
-        "Z Coordinate": "0.0",
-        "Name": "1910-??-??",
-        "year": 1910
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -86.185503,
           44.187355
         ]
@@ -45359,22 +45007,6 @@
         "Z Coordinate": "0.0",
         "Name": "1981-12-??",
         "year": 1981
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -124.023226,
-          43.303814
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=8745",
-        "Z Coordinate": "0.0",
-        "Name": "1949-08-?? ~5mi",
-        "year": 1949
       }
     },
     {
@@ -47750,22 +47382,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -99.211667,
-          51.81633
-        ]
-      },
-      "properties": {
-        "Description": "http://www.bfro.net/GDB/show_report.asp?id=9552",
-        "Z Coordinate": "0.0",
-        "Name": "1941-11-16",
-        "year": 1941
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -120.323279,
           39.339509
         ]
@@ -49846,22 +49462,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -120.768084,
-          40.038128
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=1113",
-        "Z Coordinate": "0.0",
-        "Name": "1940-10Aut ~3mi",
-        "year": 1940
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -122.436766,
           45.906115
         ]
@@ -50790,22 +50390,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -121.684707,
-          45.757885
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=1320",
-        "Z Coordinate": "0.0",
-        "Name": "1936-??-??",
-        "year": 1936
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -121.652522,
           47.193832
         ]
@@ -51174,22 +50758,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.114878,
-          46.278534
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=1378",
-        "Z Coordinate": "0.0",
-        "Name": "1930-??-?? ~3mi",
-        "year": 1930
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -122.053786,
           48.01815
         ]
@@ -51494,22 +51062,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.341733,
-          45.964394
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=1436",
-        "Z Coordinate": "0.0",
-        "Name": "1948-10-??",
-        "year": 1948
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -123.559696,
           46.204333
         ]
@@ -51670,22 +51222,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -120.983046,
-          45.653172
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=1474",
-        "Z Coordinate": "0.0",
-        "Name": "1949-??-??",
-        "year": 1949
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -123.680341,
           45.493698
         ]
@@ -51775,22 +51311,6 @@
         "Z Coordinate": "0.0",
         "Name": "2000-12-06",
         "year": 2000
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.01236,
-          46.109018
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=1487",
-        "Z Coordinate": "0.0",
-        "Name": "1941-??-??",
-        "year": 1941
       }
     },
     {
@@ -52694,22 +52214,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -82.805357,
-          37.814287
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=170",
-        "Z Coordinate": "0.0",
-        "Name": "1944-04-?? ~5mi",
-        "year": 1944
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -121.818997,
           45.725613
         ]
@@ -53270,22 +52774,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -89.446722,
-          36.233854
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=250",
-        "Z Coordinate": "0.0",
-        "Name": "1949-04spr",
-        "year": 1949
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -123.525515,
           47.028008
         ]
@@ -53551,38 +53039,6 @@
         "Z Coordinate": "0.0",
         "Name": "1991-??-??",
         "year": 1991
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.018834,
-          46.135068
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=291",
-        "Z Coordinate": "0.0",
-        "Name": "1925-??-??",
-        "year": 1925
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.107175,
-          46.287289
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=292",
-        "Z Coordinate": "0.0",
-        "Name": "1900-??-?? ~3mi",
-        "year": 1900
       }
     },
     {
@@ -53910,70 +53366,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -125.666667,
-          49.666443
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=340",
-        "Z Coordinate": "0.0",
-        "Name": "1901-??-??",
-        "year": 1901
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -128.9575,
-          53.480072
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=341",
-        "Z Coordinate": "0.0",
-        "Name": "1907-??-??",
-        "year": 1907
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -120.8,
-          53.765717
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=342",
-        "Z Coordinate": "0.0",
-        "Name": "1915-??-??",
-        "year": 1915
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -121.837306,
-          49.371185
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=344",
-        "Z Coordinate": "0.0",
-        "Name": "1941-10-?? ~20mi",
-        "year": 1941
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -121.572374,
           48.220024
         ]
@@ -54214,22 +53606,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -122.534814,
-          47.456303
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=372",
-        "Z Coordinate": "0.0",
-        "Name": "1944-07Sum",
-        "year": 1944
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -122.602453,
           48.769898
         ]
@@ -54287,22 +53663,6 @@
         "Z Coordinate": "0.0",
         "Name": "1974-08-??",
         "year": 1974
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -132.855755,
-          57.016811
-        ]
-      },
-      "properties": {
-        "Description": "http://www.internationalbigfootsociety.com/html/dsp_report.php?id=385",
-        "Z Coordinate": "0.0",
-        "Name": "1900-??-??",
-        "year": 1900
       }
     },
     {
@@ -56854,22 +56214,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -83.888446,
-          43.5256
-        ]
-      },
-      "properties": {
-        "Description": "http://www.michiganbigfoot.org/sightings10.html",
-        "Z Coordinate": "0.0",
-        "Name": "1937-??-?? ~10mi",
-        "year": 1937
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -84.903718,
           42.559396
         ]
@@ -58847,22 +58191,6 @@
         "Z Coordinate": "0.0",
         "Name": "1959-??-?? ~5mi",
         "year": 1959
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.352043,
-          41.705357
-        ]
-      },
-      "properties": {
-        "Description": "http://www.pabigfootsociety.com/sightingscrawford.html",
-        "Z Coordinate": "0.0",
-        "Name": "1946-??-?? ~5mi",
-        "year": 1946
       }
     },
     {
@@ -61382,22 +60710,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.752953,
-          40.201893
-        ]
-      },
-      "properties": {
-        "Description": "http://www.pabigfootsociety.com/sightingswestmoreland.html",
-        "Z Coordinate": "0.0",
-        "Name": "1945-??-?? ~3mi",
-        "year": 1945
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -79.365304,
           40.278969
         ]
@@ -62310,22 +61622,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -93.93461,
-          32.698596
-        ]
-      },
-      "properties": {
-        "Description": "http://www.texasbigfoot.com/Caddoparish4.html",
-        "Z Coordinate": "0.0",
-        "Name": "1947-01-??",
-        "year": 1947
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           -93.691472,
           30.314369
         ]
@@ -62399,22 +61695,6 @@
         "Z Coordinate": "0.0",
         "Name": "1977-07Sum",
         "year": 1977
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -94.225903,
-          33.199997
-        ]
-      },
-      "properties": {
-        "Description": "http://www.texasbigfoot.com/Cass4.html",
-        "Z Coordinate": "0.0",
-        "Name": "1917-07Sum~10mi",
-        "year": 1917
       }
     },
     {

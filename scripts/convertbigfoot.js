@@ -26,7 +26,7 @@ for (var i = 0; i < file.features.length; i ++) {
     item = file.features[i];
     dateField = item.properties.Name;
     year = strToDate(dateField);
-    if (year && year >= 1900) {
+    if (year && year >= 1950) {
         good++;
         item.properties.year = year;
     }
