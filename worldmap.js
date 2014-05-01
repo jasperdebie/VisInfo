@@ -207,6 +207,7 @@ var worldmap = (function () {
         var offsetT = document.getElementById('container').offsetTop + 10;
 
 
+        var tooltipsVisible = false;
         //tooltips
         country
             .on("mousemove", function (d, i) {
@@ -219,15 +220,38 @@ var worldmap = (function () {
                 if (amountOfLiters == undefined)  // if it is not defined this is the default
                     rateById[d.properties.name] = "Unknown";
 
-                tooltip.classed("hidden", false)
-                    .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                    .html(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
+
+                $("#extraData").text(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
 
             })
             .on("mouseout", function (d, i) {
                 tooltip.classed("hidden", true);
+                $("#extraData").text("");
             })
-        ;
+            .on("click", function (d, i) {
+                if(tooltipsVisible==false)
+                {
+                    var mouse = d3.mouse(svg.node()).map(function (d) {
+                        return parseInt(d);
+                    });
+
+                    var amountOfLiters = rateById[d.properties.name];
+                    if (amountOfLiters == undefined)  // if it is not defined this is the default
+                        rateById[d.properties.name] = "Unknown";
+
+                    tooltip.classed("hidden", false)
+                        .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
+                        .html(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
+                    tooltipsVisible=true;
+                }
+                else{
+                    tooltip.classed("hidden",true);
+                    tooltipsVisible=false;
+                }
+
+
+            });
+
 
 
         //EXAMPLE: adding some capitals  rom external CSV file
