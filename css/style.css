@@ -84,6 +84,6 @@ div.tooltip {
     font-size: 12px;
 }
 
-#brush {
-    background-color: grey;
+.brushelement {
+    background-color: #F2F5F0;
 }

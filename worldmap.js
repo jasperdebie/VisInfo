@@ -255,7 +255,7 @@ var worldmap = (function () {
 
     function setupBrush(data) {
         /* Creation of Brush */
-        var margin = {top: 30, right: 10, bottom: 20, left: 50},
+        var margin = {top: 30, right: 15, bottom: 20, left: 15},
             width = document.getElementById('container').offsetWidth ,
             height = 100 - margin.top - margin.bottom;
 
@@ -285,18 +285,20 @@ var worldmap = (function () {
             });
 
         var svg = d3.select("#brush").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom);
+            .attr("width", width + margin.left + margin.right )
+            .attr("height", height + margin.top + margin.bottom).attr("class", "brushelement")
+            ;
 
         svg.append("defs").append("clipPath")
             .attr("id", "clip")
             .append("rect")
-            .attr("width", width+ margin.left + margin.right)
+            .attr("width", width)
             .attr("height", height);
 
         var context = svg.append("g")
             .attr("class", "context")
-            .attr("transform", "translate(" + 20 + "," + margin.top + ")");
+            .attr("transform", "translate(" + 20 + "," + margin.top + ")")
+            ;
 
         d3.json("datasets/brushData.json", function (error, brushdata) {
             x.domain(d3.extent(brushdata.map(function (d) {
@@ -316,6 +318,7 @@ var worldmap = (function () {
                 .attr("class", "x axis")
                 .attr("transform", "translate(00," + height + ")")
                 .call(xAxis);
+
 
             context.append("g")
                 .attr("class", "x brush")
