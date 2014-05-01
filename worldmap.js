@@ -381,7 +381,7 @@ var worldmap = (function () {
             var begindatum = parseInt(new Date(brush.extent()[0]).getFullYear());
             var einddatum = parseInt(new Date(brush.extent()[1]).getFullYear());
 
-
+            if($(chkUfoSpotting).prop('checked')){
             ufo.selectAll("circle").remove();
             ufo.selectAll("circle")
                 .data(data.features.filter(function (d, i) {
@@ -400,6 +400,7 @@ var worldmap = (function () {
                 })
                 .attr("class", "UfoColor")
                 .attr("r", calcScale());
+            }
 
             console.log(new Date(brush.extent()[0]).getFullYear());
             console.log(new Date(brush.extent()[1]).getFullYear());
