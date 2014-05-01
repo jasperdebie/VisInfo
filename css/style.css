@@ -74,10 +74,12 @@ div.tooltip {
 
 .ufoColor {
     fill: rgb(33, 113, 181);
+    opacity: 0.70;
 }
 
 .bigfootColor {
     fill: red;
+    opacity: .70;
 }
 
 .legend {
