@@ -256,14 +256,14 @@ var worldmap = (function () {
     function setupBrush(data) {
         /* Creation of Brush */
         var margin = {top: 30, right: 15, bottom: 20, left: 15},
-            width = document.getElementById('container').offsetWidth ,
+            width = document.getElementById('container').offsetWidth -4,
             height = 100 - margin.top - margin.bottom;
 
         /* Get the correct form for data */
         var parseDate = d3.time.format("%Y").parse;
 
 
-        var x = d3.time.scale().range([0, width]), // type scale
+        var x = d3.time.scale().range([0, width- ( margin.left + margin.right  )]), // type scale
             y = d3.scale.linear().range([height, 0]);
 
         /* Position of brushbar */
@@ -285,20 +285,19 @@ var worldmap = (function () {
             });
 
         var svg = d3.select("#brush").append("svg")
-            .attr("width", width + margin.left + margin.right )
-            .attr("height", height + margin.top + margin.bottom).attr("class", "brushelement")
-            ;
+            .attr("width", width  )
+            .attr("height", height + margin.top + margin.bottom)
+                .attr("class", "brushelement");
 
         svg.append("defs").append("clipPath")
             .attr("id", "clip")
             .append("rect")
-            .attr("width", width)
+            .attr("width", width - ( margin.left + margin.right +40 ))
             .attr("height", height);
 
         var context = svg.append("g")
             .attr("class", "context")
-            .attr("transform", "translate(" + 20 + "," + margin.top + ")")
-            ;
+            .attr("transform", "translate(" + 20 + "," + margin.top + ")");
 
         d3.json("datasets/brushData.json", function (error, brushdata) {
             x.domain(d3.extent(brushdata.map(function (d) {
@@ -318,7 +317,6 @@ var worldmap = (function () {
                 .attr("class", "x axis")
                 .attr("transform", "translate(00," + height + ")")
                 .call(xAxis);
-
 
             context.append("g")
                 .attr("class", "x brush")
