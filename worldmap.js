@@ -507,7 +507,14 @@ var worldmap = (function () {
                 return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
             })
             .attr("class", "bigfootColor")
-            .attr("r", scaleFactor);
+            .attr("r", scaleFactor)
+            .on("mousemove", function (d, i) {
+
+                    $("#extraData").html("Name: " +d.properties.Name+
+                        "<br>Description: <a href=" +d.properties.Description +">Details"+ "</a>"+
+                        "<br>Year: "+ d.properties.year);
+
+                });
     }
 
 
