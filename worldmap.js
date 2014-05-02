@@ -213,15 +213,15 @@ var worldmap = (function () {
             throw new Error(error);
         }
 
-        var rateById = {}; // will hold the liters per alcohol adult consumption
+        var rateById = {}; // will hold the detailed info for a dataset
         console.log(arguments);
         if (typeof dataset !== 'undefined') {
             dataset.forEach(function (d) {
                 rateById[d[opts.location]] = +d[opts.column];
+
             });
         }
 
-        console.log("rate", rateById);
         country.enter().insert("path")
             .attr("class", "country")
             .attr("d", path)
@@ -251,18 +251,7 @@ var worldmap = (function () {
         //tooltips
         country.on("mousemove", function (d, i) {
 
-                var mouse = d3.mouse(svg.node()).map(function (d) {
-                    return parseInt(d);
-                });
-
-                var amountOfLiters = rateById[d.properties.name];
-                if (amountOfLiters == undefined) {  // if it is not defined this is the default
-                    rateById[d.properties.name] = "Unknown";
-                }
-
-
-                $("#extraData").text(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
-
+            $("#extraData").text(getExtraText(d));
             })
             .on("mouseout", function (d, i) {
                 tooltip.classed("hidden", true);
@@ -274,14 +263,11 @@ var worldmap = (function () {
                     var mouse = d3.mouse(svg.node()).map(function (d) {
                         return parseInt(d);
                     });
-
-                    var amountOfLiters = rateById[d.properties.name];
-                    if (amountOfLiters == undefined)  // if it is not defined this is the default
-                        rateById[d.properties.name] = "Unknown";
-
                     tooltip.classed("hidden", false)
                         .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                        .html(d.properties.name + "\n - Amount of Liters: " + rateById[d.properties.name]);
+                        .html(getExtraText(d));
+
+
                     tooltipsVisible=true;
                 }
                 else{
@@ -291,6 +277,47 @@ var worldmap = (function () {
 
 
             });
+
+        function getExtraText(d)
+        {
+
+
+            var detailVal = rateById[d.properties.name];
+            if (detailVal == undefined)  // if it is not defined this is the default
+                detailVal = "Unknown";
+
+
+            var prefixText = "\n - ";  // prefix text for a property
+            var numberOfDecimals = 2; // specifies the amount of decimals for the value
+            // determine extra info based on selected item
+            switch(sort) {
+                case 1:
+                    prefixText ="";
+                    break;
+                case 2:
+                    prefixText +="Population: ";
+                    detailVal = parseFloat(detailVal).toFixed(numberOfDecimals);
+                    break;
+                case 3:
+                    prefixText +="Amount of Liters: ";
+                    detailVal = parseFloat(detailVal).toFixed(numberOfDecimals);
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    prefixText ="";
+            }
+
+            if(prefixText=="") // no detail info when the neutral map is chosen
+            {
+                detailVal = "";
+            }
+
+            return d.properties.name + prefixText + detailVal;
+
+        }
     }
 
     //draw brush and ufo
@@ -456,7 +483,15 @@ var worldmap = (function () {
                 return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
             })
             .attr("class", "ufoColor")
-            .attr("r", scaleFactor);
+            .attr("r", scaleFactor)
+        .on("mousemove", function (d, i) {
+
+            $("#extraData").html("Name: " +d.properties.name+
+                                 "<br>Mass: "+ d.properties.mass+
+                                 "<br>Year: "+ d.properties.year+
+                                 "<br>ReccClass: "+ d.properties.recclass
+                            );
+        });
     }
 
     function drawBigfoot(data) {
