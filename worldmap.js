@@ -2,6 +2,10 @@ var worldmap = (function () {
     var exports = {};
     var country;
 
+    //offsets for tooltips
+    var offsetL = document.getElementById('container').offsetLeft + 20;
+    var offsetT = document.getElementById('container').offsetTop + 10;
+
     d3.select(window).on("resize", throttle);
 
     var zoom = d3.behavior.zoom()
@@ -242,9 +246,7 @@ var worldmap = (function () {
                 }
             });
 
-        //offsets for tooltips
-        var offsetL = document.getElementById('container').offsetLeft + 20;
-        var offsetT = document.getElementById('container').offsetTop + 10;
+
 
 
         var tooltipsVisible = false;
@@ -471,6 +473,7 @@ var worldmap = (function () {
 
 
     function drawUfos(data) {
+        var tooltipsVisible = false;
         ufo = g.append("g");
         ufo.selectAll("circle")
             .data(data.features)
@@ -484,17 +487,48 @@ var worldmap = (function () {
             })
             .attr("class", "ufoColor")
             .attr("r", scaleFactor)
-        .on("mousemove", function (d, i) {
+            .on("mouseout", function (d) {
+                tooltip.classed("hidden", true);
+                $("#extraData").text("");
+            })
+            .on("mousemove", function (d) {
 
             $("#extraData").html("Name: " +d.properties.name+
                                  "<br>Mass: "+ d.properties.mass+
                                  "<br>Year: "+ d.properties.year+
                                  "<br>ReccClass: "+ d.properties.recclass
                             );
-        });
+
+            })
+            .on("click", function (d, i) {
+                if(tooltipsVisible==false)
+                {
+                    var mouse = d3.mouse(svg.node()).map(function (d) {
+                        return parseInt(d);
+                    });
+                    var textValue ="Name: " +d.properties.name+
+                        "<br>Mass: "+ d.properties.mass+
+                        "<br>Year: "+ d.properties.year+
+                        "<br>ReccClass: "+ d.properties.recclass;
+
+                    tooltip.classed("hidden", false)
+                        .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
+                        .html(textValue);
+
+
+                    tooltipsVisible=true;
+                }
+                else{
+                    tooltip.classed("hidden",true);
+                    tooltipsVisible=false;
+                }
+            });
+        ;
     }
 
     function drawBigfoot(data) {
+
+        var tooltipsVisible = false;
         bigfoot = g.append("g");
         bigfoot.selectAll("circle")
             .data(data.features)
@@ -508,12 +542,38 @@ var worldmap = (function () {
             })
             .attr("class", "bigfootColor")
             .attr("r", scaleFactor)
-            .on("mousemove", function (d, i) {
+            .on("mouseout", function (d) {
+
+                $("#extraData").text("");
+            })
+            .on("mousemove", function (d) {
 
                     $("#extraData").html("Name: " +d.properties.Name+
-                        "<br>Description: <a href=" +d.properties.Description +">Details"+ "</a>"+
                         "<br>Year: "+ d.properties.year);
 
+                })
+
+            .on("click", function (d, i) {
+                    if(tooltipsVisible==false)
+                    {
+                        var mouse = d3.mouse(svg.node()).map(function (d) {
+                            return parseInt(d);
+                        });
+                        var textValue ="Name: " +d.properties.Name+
+                            "<br>Description: <a href=" +d.properties.Description +">Details"+ "</a>"+
+                            "<br>Year: "+ d.properties.year;
+
+                        tooltip.classed("hidden", false)
+                            .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
+                            .html(textValue);
+
+
+                        tooltipsVisible=true;
+                    }
+                    else{
+                        tooltip.classed("hidden",true);
+                        tooltipsVisible=false;
+                    }
                 });
     }
 
