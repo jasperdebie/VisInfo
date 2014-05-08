@@ -325,7 +325,10 @@ var worldmap = (function () {
     //draw brush and ufo
     d3.json("datasets/UfoGeojson.json", function (error, data) {
         drawUfos(data);
-        setupBrush(data);
+        d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
+            setupBrush(data,bigfootData);
+        });
+
     });
     d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
        // drawBigfoot(data);
@@ -333,7 +336,7 @@ var worldmap = (function () {
     });
 
 
-    function setupBrush(data) {
+    function setupBrush(data, bigfootdata) {
         /* Creation of Brush */
         var margin = {top: 30, right: 15, bottom: 20, left: 15},
             width = document.getElementById('container').offsetWidth -4,
@@ -457,6 +460,27 @@ var worldmap = (function () {
                 })
                 .attr("class", "UfoColor")
                 .attr("r", calcScale());
+            }
+
+            if($(chkBigfootSpotting).prop('checked')){
+                bigfoot.selectAll("circle").remove();
+                bigfoot.selectAll("circle")
+                    .data(bigfootdata.features.filter(function (d, i) {
+                        if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
+                            return d;
+                        }
+                    }))
+                    .enter()
+                    .append("circle")
+                    .attr("class", "circles")
+                    .attr("cx", function (d) {
+                        return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+                    })
+                    .attr("cy", function (d) {
+                        return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+                    })
+                    .attr("class", "bigfootColor")
+                    .attr("r", calcScale());
             }
 
             console.log(new Date(brush.extent()[0]).getFullYear());
