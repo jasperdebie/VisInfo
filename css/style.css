@@ -33,7 +33,7 @@
 }
 
 #container {
-    margin: 10px 10%;
+    border: 2px solid #000;
     border: 2px solid grey;
     border-radius: 5px;
     height: 100%;
@@ -88,7 +88,7 @@ div.tooltip {
 
 .brushelement {
     background-color: #F2F5F0;
-    margin: 10px 10%;
+    margin-top: 10px;
     border: 2px solid grey;
     border-radius: 5px;
     height: 100%;
