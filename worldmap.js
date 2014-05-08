@@ -458,7 +458,7 @@ var worldmap = (function () {
                 .attr("cy", function (d) {
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                 })
-                .attr("class", "UfoColor")
+                .attr("class", "ufoColor")
                 .attr("r", calcScale());
             }
 
