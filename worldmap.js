@@ -379,6 +379,33 @@ var worldmap = (function () {
             .attr("class", "context")
             .attr("transform", "translate(" + 20 + "," + margin.top + ")");
 
+        d3.json("datasets/bigfootbrush.json", function (error, brushdata) {
+            x.domain(d3.extent(brushdata.map(function (d) {
+                return parseDate(d.year);
+            })));
+            y.domain([0, d3.max(brushdata.map(function (d) {
+                return d.amount;
+            }))]);
+
+            context.append("path")
+                .datum(brushdata)
+                .attr("class", "area")
+                .attr("d", area2)
+                .attr("class", "bigfootColor");
+
+            context.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(00," + height + ")")
+                .call(xAxis);
+
+            context.append("g")
+                .attr("class", "x brush")
+                .call(brush)
+                .selectAll("rect")
+                .attr("y", -6)
+                .attr("height", height + 7);
+        });
+
         d3.json("datasets/brushData.json", function (error, brushdata) {
             x.domain(d3.extent(brushdata.map(function (d) {
                 return parseDate(d.year);
@@ -406,32 +433,6 @@ var worldmap = (function () {
                 .attr("height", height + 7);
         });
 
-        d3.json("datasets/bigfootbrush.json", function (error, brushdata) {
-            x.domain(d3.extent(brushdata.map(function (d) {
-                return parseDate(d.year);
-            })));
-            y.domain([0, d3.max(brushdata.map(function (d) {
-                return d.amount;
-            }))]);
-
-            context.append("path")
-                .datum(brushdata)
-                .attr("class", "area")
-                .attr("d", area2)
-                .attr("class", "bigfootColor");
-
-            context.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(00," + height + ")")
-                .call(xAxis);
-
-            context.append("g")
-                .attr("class", "x brush")
-                .call(brush)
-                .selectAll("rect")
-                .attr("y", -6)
-                .attr("height", height + 7);
-        });
 
         function brushed() {
             var begindatum = parseInt(new Date(brush.extent()[0]).getFullYear());
