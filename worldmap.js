@@ -254,10 +254,37 @@ var worldmap = (function () {
         country.on("mousemove", function (d, i) {
 
             $("#extraData").text(getExtraText(d));
-            })
+
+            var infoHeader = "Info ";
+            switch(sort) {
+                case 1:
+                    infoHeader +="Country ";
+                    break;
+                case 2:
+                    infoHeader +="Population";
+                    break;
+                case 3:
+                    infoHeader +="Alcohol Consumption";
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    infoHeader ="";
+            }
+            $("#extraDataHeader").text(infoHeader);
+
+
+        })
+
+
             .on("mouseout", function (d, i) {
                 tooltip.classed("hidden", true);
                 $("#extraData").text("");
+                $("#extraDataHeader").text("");
+
+
             })
             .on("click", function (d, i) {
                 if(tooltipsVisible==false)
@@ -282,8 +309,6 @@ var worldmap = (function () {
 
         function getExtraText(d)
         {
-
-
             var detailVal = rateById[d.properties.name];
             if (detailVal == undefined)  // if it is not defined this is the default
                 detailVal = "Unknown";
@@ -518,11 +543,13 @@ var worldmap = (function () {
             })
             .on("mousemove", function (d) {
 
-            $("#extraData").html("Name: " +d.properties.name+
+                $("#extraDataHeader").text("Info UFO ");
+
+                $("#extraData").html("Name: " +d.properties.name+
                                  "<br>Mass: "+ d.properties.mass+
                                  "<br>Year: "+ d.properties.year+
                                  "<br>ReccClass: "+ d.properties.recclass
-                            );
+                 );
 
             })
             .on("click", function (d, i) {
@@ -568,12 +595,15 @@ var worldmap = (function () {
             .attr("class", "bigfootColor")
             .attr("r", scaleFactor)
             .on("mouseout", function (d) {
+                $("#extraDataHeader").text("");
 
                 $("#extraData").text("");
             })
             .on("mousemove", function (d) {
 
-                    $("#extraData").html("Name: " +d.properties.Name+
+                $("#extraDataHeader").text("Info Bigfoot ");
+
+                $("#extraData").html("Name: " +d.properties.Name+
                         "<br>Year: "+ d.properties.year);
 
                 })
