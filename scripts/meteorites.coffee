@@ -11,6 +11,9 @@ for k, v of features
   year = parseInt(v.properties.year)
   if not(year >= threshold) or year > 2014
     delete features[k]
+  if v.geometry.coordinates is undefined
+    delete features[k]
+
 
 features = features.filter (e)-> e
 
