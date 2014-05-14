@@ -82,6 +82,11 @@ div.tooltip {
     opacity: .70;
 }
 
+.meteoriteColor{
+    fill: green;
+    opacity: .70;
+}
+
 .legend {
     font-size: 12px;
 }

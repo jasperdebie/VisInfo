@@ -67,7 +67,7 @@
                 </div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="" id="chkMeteorites" onclick="chkFilter()">Meteorites
+                        <input type="checkbox" value="" id="chkMeteorites" onclick="chkFilterMeteorites()">Meteorites
                     </label>
                 </div>
 
@@ -124,6 +124,9 @@
         }
         function chkFilterBigfoot() {
             worldmap.checkboxFilteringBigfood(document.getElementById('chkBigfootSpotting').checked);
+        }
+        function chkFilterBigfoot() {
+            worldmap.checkboxFilteringMeteorites(document.getElementById('chkFilterMeteorites').checked);
         }
     </script>
     <link rel="stylesheet" type="text/css" href="css/style.css">

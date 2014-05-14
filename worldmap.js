@@ -45,7 +45,7 @@ var worldmap = (function () {
                 "<br> Year: "+ d.properties.year;
         },
         header: "Info meteorite",
-        colorClass: "",
+        colorClass: "meteoriteColor",
         group: "meteorite"
     };
 
@@ -405,9 +405,7 @@ var worldmap = (function () {
     });
 
 
-    d3.json("datasets/meteorites.json", function(error, data) {
-        drawDataset(data, meteoriteDescriptor);
-    });
+
 
 
     function setupBrush(data, bigfootdata) {
@@ -719,7 +717,18 @@ var worldmap = (function () {
             datasets.bigfoot.selectAll("circle").remove();
     }
 
+    function checkboxFilteringMeteorites(meteoriteChecked) {
+        (meteoriteChecked) ?
+            d3.json("datasets/meteorites.json", function(error, data) {
+                drawDataset(data, meteoriteDescriptor);
+            }) :
+            datasets.meteorites.selectAll("circle").remove();
+    }
+
+
+
     exports.checkboxFilteringUfo = checkboxFilteringUfo;
     exports.checkboxFilteringBigfood = checkboxFilteringBigfood;
+    exports.checkboxFilteringMeteorites = checkboxFilteringMeteorites;
     return exports;
 })();
