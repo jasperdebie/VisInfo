@@ -407,7 +407,6 @@ var worldmap = (function () {
 
 
 
-
     function setupBrush(data, bigfootdata) {
         /* Creation of Brush */
         var margin = {top: 30, right: 15, bottom: 20, left: 15},
@@ -709,26 +708,24 @@ var worldmap = (function () {
             datasets.ufo.selectAll("circle").remove();
     }
 
-    function checkboxFilteringBigfood(bigfoodChecked) {
-        (bigfoodChecked) ?
+    function checkboxFilteringBigfoot(bigfootchecked) {
+        (bigfootchecked) ?
             d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
                 drawDataset(data, bigfootDescriptor);
             }) :
             datasets.bigfoot.selectAll("circle").remove();
     }
 
-    function checkboxFilteringMeteorites(meteoriteChecked) {
-        (meteoriteChecked) ?
+    function checkboxFilteringMeteorites(meteoritesChecked) {
+        if (meteoritesChecked) {
             d3.json("datasets/meteorites.json", function(error, data) {
                 drawDataset(data, meteoriteDescriptor);
-            }) :
-            datasets.meteorites.selectAll("circle").remove();
+            });
+        }
     }
 
-
-
     exports.checkboxFilteringUfo = checkboxFilteringUfo;
-    exports.checkboxFilteringBigfood = checkboxFilteringBigfood;
+    exports.checkboxFilteringBigfood = checkboxFilteringBigfoot;
     exports.checkboxFilteringMeteorites = checkboxFilteringMeteorites;
     return exports;
 })();
