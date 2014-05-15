@@ -14,6 +14,55 @@ var worldmap = (function () {
 
 
 
+    var ufoDescriptor = {
+        descriptor: function(d) {
+            return "Name: " +d.properties.name+
+                "<br>Mass: "+ d.properties.mass+
+                "<br>Year: "+ d.properties.year+
+                "<br>ReccClass: "+ d.properties.recclass;
+
+        },
+        colorClass: "ufoColor",
+        header: "Info UFO",
+        group: "ufo"
+    };
+
+    var bigfootDescriptor = {
+        descriptor: function(d) {
+            return "Name: " +d.properties.Name+
+                "<br>Description: <a href=" +d.properties.Description +">Details"+ "</a>"+
+                "<br>Year: "+ d.properties.year;
+        },
+        colorClass: "bigfootColor",
+        header: "Info Bigfoot",
+        group: "bigfoot"
+    };
+
+    var meteoriteDescriptor = {
+        descriptor: function(d) {
+            return "Place: " + d.properties.name +
+                "<br> Mass: " + d.properties.mass +
+                "<br> Year: "+ d.properties.year;
+        },
+        header: "Info meteorite",
+        colorClass: "meteoriteColor",
+        group: "meteorite"
+    };
+
+    var airportDescriptor = {
+        descriptor: function(d) {
+            return "Code:" + d.properties.airport_code +
+                "<br> Name: "+ d.properties.airport_name;
+        },
+        header: "Info airport",
+        colorClass: "bigfootColor",
+        group: "airport"
+    };
+
+    //keeps the groups (svg) of different datasets. to avoid global cluttering
+    var datasets = {};
+
+
     /*
      * Colors
      */
@@ -254,10 +303,37 @@ var worldmap = (function () {
         country.on("mousemove", function (d, i) {
 
             $("#extraData").text(getExtraText(d));
-            })
+
+            var infoHeader = "Info ";
+            switch(sort) {
+                case 1:
+                    infoHeader +="Country ";
+                    break;
+                case 2:
+                    infoHeader +="Population";
+                    break;
+                case 3:
+                    infoHeader +="Alcohol Consumption";
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                default:
+                    infoHeader ="";
+            }
+            $("#extraDataHeader").text(infoHeader);
+
+
+        })
+
+
             .on("mouseout", function (d, i) {
                 tooltip.classed("hidden", true);
                 $("#extraData").text("");
+                $("#extraDataHeader").text("");
+
+
             })
             .on("click", function (d, i) {
                 if(tooltipsVisible==false)
@@ -282,8 +358,6 @@ var worldmap = (function () {
 
         function getExtraText(d)
         {
-
-
             var detailVal = rateById[d.properties.name];
             if (detailVal == undefined)  // if it is not defined this is the default
                 detailVal = "Unknown";
@@ -324,16 +398,13 @@ var worldmap = (function () {
 
     //draw brush and ufo
     d3.json("datasets/UfoGeojson.json", function (error, data) {
-        drawUfos(data);
+        drawDataset(data, ufoDescriptor);
         d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
             setupBrush(data,bigfootData);
         });
+    });
 
-    });
-    d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
-       // drawBigfoot(data);
-        //setupBrush(data);
-    });
+
 
 
     function setupBrush(data, bigfootdata) {
@@ -421,7 +492,7 @@ var worldmap = (function () {
                 .datum(brushdata)
                 .attr("class", "area")
                 .attr("d", area2)
-                .attr("class", "ufoColor")
+                .attr("class", "ufoColor");
 
             context.append("g")
                 .attr("class", "x axis")
@@ -442,8 +513,8 @@ var worldmap = (function () {
             var einddatum = parseInt(new Date(brush.extent()[1]).getFullYear());
 
             if($(chkUfoSpotting).prop('checked')){
-            ufo.selectAll("circle").remove();
-            ufo.selectAll("circle")
+            datasets.ufo.selectAll("circle").remove();
+            datasets.ufo.selectAll("circle")
                 .data(data.features.filter(function (d, i) {
                     if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
                         return d;
@@ -458,13 +529,13 @@ var worldmap = (function () {
                 .attr("cy", function (d) {
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                 })
-                .attr("class", "UfoColor")
+                .attr("class", "ufoColor")
                 .attr("r", calcScale());
             }
 
             if($(chkBigfootSpotting).prop('checked')){
-                bigfoot.selectAll("circle").remove();
-                bigfoot.selectAll("circle")
+                datasets.bigfoot.selectAll("circle").remove();
+                datasets.bigfoot.selectAll("circle")
                     .data(bigfootdata.features.filter(function (d, i) {
                         if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
                             return d;
@@ -497,10 +568,11 @@ var worldmap = (function () {
 
 
 
-    function drawUfos(data) {
+    function drawDataset(data, opts) {
         var tooltipsVisible = false;
-        ufo = g.append("g");
-        ufo.selectAll("circle")
+        datasets[opts.group] = g.append("g");
+        var dataset = datasets[opts.group];
+        dataset.selectAll("circle")
             .data(data.features)
             .enter()
             .append("circle")
@@ -510,7 +582,7 @@ var worldmap = (function () {
             .attr("cy", function (d) {
                 return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
             })
-            .attr("class", "ufoColor")
+            .attr("class", opts.colorClass)
             .attr("r", scaleFactor)
             .on("mouseout", function (d) {
                 tooltip.classed("hidden", true);
@@ -518,11 +590,9 @@ var worldmap = (function () {
             })
             .on("mousemove", function (d) {
 
-            $("#extraData").html("Name: " +d.properties.name+
-                                 "<br>Mass: "+ d.properties.mass+
-                                 "<br>Year: "+ d.properties.year+
-                                 "<br>ReccClass: "+ d.properties.recclass
-                            );
+                $("#extraDataHeader").text(opts.header);
+
+                $("#extraData").html(opts.descriptor(d));
 
             })
             .on("click", function (d, i) {
@@ -531,10 +601,7 @@ var worldmap = (function () {
                     var mouse = d3.mouse(svg.node()).map(function (d) {
                         return parseInt(d);
                     });
-                    var textValue ="Name: " +d.properties.name+
-                        "<br>Mass: "+ d.properties.mass+
-                        "<br>Year: "+ d.properties.year+
-                        "<br>ReccClass: "+ d.properties.recclass;
+                    var textValue = opts.descriptor(d);
 
                     tooltip.classed("hidden", false)
                         .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
@@ -548,60 +615,8 @@ var worldmap = (function () {
                     tooltipsVisible=false;
                 }
             });
-        ;
+
     }
-
-    function drawBigfoot(data) {
-
-        var tooltipsVisible = false;
-        bigfoot = g.append("g");
-        bigfoot.selectAll("circle")
-            .data(data.features)
-            .enter()
-            .append("circle")
-            .attr("cx", function (d) {
-                return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
-            })
-            .attr("cy", function (d) {
-                return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
-            })
-            .attr("class", "bigfootColor")
-            .attr("r", scaleFactor)
-            .on("mouseout", function (d) {
-
-                $("#extraData").text("");
-            })
-            .on("mousemove", function (d) {
-
-                    $("#extraData").html("Name: " +d.properties.Name+
-                        "<br>Year: "+ d.properties.year);
-
-                })
-
-            .on("click", function (d, i) {
-                    if(tooltipsVisible==false)
-                    {
-                        var mouse = d3.mouse(svg.node()).map(function (d) {
-                            return parseInt(d);
-                        });
-                        var textValue ="Name: " +d.properties.Name+
-                            "<br>Description: <a href=" +d.properties.Description +">Details"+ "</a>"+
-                            "<br>Year: "+ d.properties.year;
-
-                        tooltip.classed("hidden", false)
-                            .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                            .html(textValue);
-
-
-                        tooltipsVisible=true;
-                    }
-                    else{
-                        tooltip.classed("hidden",true);
-                        tooltipsVisible=false;
-                    }
-                });
-    }
-
 
     function redraw() {
         width = document.getElementById('container').offsetWidth;
@@ -688,20 +703,29 @@ var worldmap = (function () {
     function checkboxFilteringUfo(ufoChecked) {
         (ufoChecked) ?
             d3.json("datasets/UfoGeojson.json", function (error, data) {
-                drawUfos(data);
+                drawDataset(data, ufoDescriptor);
             }) :
-            ufo.selectAll("circle").remove();
+            datasets.ufo.selectAll("circle").remove();
     }
 
-    function checkboxFilteringBigfood(bigfoodChecked) {
-        (bigfoodChecked) ?
+    function checkboxFilteringBigfoot(bigfootchecked) {
+        (bigfootchecked) ?
             d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
-                drawBigfoot(data);
+                drawDataset(data, bigfootDescriptor);
             }) :
-            bigfoot.selectAll("circle").remove();
+            datasets.bigfoot.selectAll("circle").remove();
+    }
+
+    function checkboxFilteringMeteorites(meteoritesChecked) {
+        if (meteoritesChecked) {
+            d3.json("datasets/meteorites.json", function(error, data) {
+                drawDataset(data, meteoriteDescriptor);
+            });
+        }
     }
 
     exports.checkboxFilteringUfo = checkboxFilteringUfo;
-    exports.checkboxFilteringBigfood = checkboxFilteringBigfood;
+    exports.checkboxFilteringBigfood = checkboxFilteringBigfoot;
+    exports.checkboxFilteringMeteorites = checkboxFilteringMeteorites;
     return exports;
 })();
