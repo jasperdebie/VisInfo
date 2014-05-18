@@ -69,21 +69,25 @@ var worldmap = (function () {
 
 
     // Setting color domains(intervals of values) for our map - amount of alcohol consumtion
-    var ext_color_domain = [.00, 2.5, 5.0, 7.5, 10];
-    var ext_color_domain2 = [.00, 10, 50, 100, 200];
+    var ext_color_domain;//  = [.00, 2.5, 5.0, 7.5, 10];
+    var legend_labels;//  = ["< .00", "2.5+", "5.0+", "7.0+", "10+"];
+    var color;// = d3.scale.threshold()
+        //.domain(ext_color_domain)
+        //.range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
     var sort = 1;
+    setLegend();
+
 
     $(function(){
         $("input[name='optionsRadios']").on("click", function(e){
             var newsort = parseInt($(this).val());
             sort = newsort;
+            setLegend();
             colorMap();
         });
     });
 
-    var color = d3.scale.threshold()
-        .domain(ext_color_domain)
-        .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+
 
     var ufo;
     var bigfoot;
@@ -132,6 +136,39 @@ var worldmap = (function () {
 
     var tooltip = d3.select("#container").append("div").attr("class", "tooltip hidden");
 
+
+    function setLegend(){
+            switch(sort) {
+            case 1:
+                ext_color_domain = [.00, 2.5, 5.0, 7.5, 10];
+                legend_labels = ["< .00", "2.5+", "5.0+", "7.0+", "10+"];
+                break;
+            case 2:
+                ext_color_domain = [10, 50,70 , 100, 150];
+                legend_labels = ["< 10", "50+", "70+", "100+", "150+"];
+                break;
+            case 3:
+                ext_color_domain = [.00, 2.5, 5.0, 7.5, 10];
+                legend_labels = ["< .00", "2.5+", "5.0+", "7.5+", "10+"];
+                break;
+            case 4:
+                ext_color_domain = [60, 70, 80 ,90, 100];
+                legend_labels = ["< 60", "70+", "80+", "90+", "100+"];
+                break;
+            case 5:
+                ext_color_domain = [.50, .60, .70, .80, .90];
+                legend_labels = ["< .50", ".60+", ".70+", ".80+", ".90+"];
+                break;
+            default:
+                queue().await(ready);
+        }
+        color = d3.scale.threshold()
+        .domain(ext_color_domain)
+        .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+
+    }
+
+    
     setup(width, height);
 
     function setupMap() {
@@ -191,8 +228,17 @@ var worldmap = (function () {
                     .await(callback);
                 break;
             case 4:
+                readyOpts = {"location": "Country", "column": "IQ"};
+                queue()
+                    .defer(d3.csv, "datasets/IQ.csv")
+                    .await(callback);
                 break;
             case 5:
+                readyOpts = {"location": "Location", "column": "HDI"};
+                console.log(readyOpts);
+                queue()
+                    .defer(d3.csv, "datasets/HDI.csv")
+                    .await(callback);
                 break;
             default:
                 queue().await(ready);
@@ -218,14 +264,16 @@ var worldmap = (function () {
 
 
         setupMap();
+        drawLegend();
 
 
 
         //Adding legend for our Choropleth
-        var legend_labels = ["< .00", "2.5+", "5.0+", "7.0+", "10+"];
+        //var legend_labels = ["< .00", "2.5+", "5.0+", "7.0+", "10+"];
+        //var legend_labels2 = ["< 0.00", "10", "50", "100", "200"];
+    }
 
-        var legend_labels2 = ["< 0.00", "10", "50", "100", "200"];
-
+    function drawLegend(){
 
         var legend = svg.selectAll("g.legend")
             .data(ext_color_domain)
@@ -251,11 +299,7 @@ var worldmap = (function () {
             .attr("y", function (d, i) {
                 return height - (i * ls_h) - ls_h - 4;
             })
-            .text(function (d, i) {
-                if (sort == 1)
-                    return legend_labels[i]
-                else
-                    return legend_labels2[i]
+            .text(function (d, i) {return legend_labels[i]                  
             });
 
     }
