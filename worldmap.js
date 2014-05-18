@@ -765,6 +765,7 @@ var worldmap = (function () {
             d3.json("datasets/meteorites.json", function(error, data) {
                 drawDataset(data, meteoriteDescriptor);
             });
+            //datasets.bigfoot.selectAll("circle").remove();
         }
     }
 
