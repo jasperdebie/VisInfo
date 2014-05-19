@@ -99,3 +99,42 @@ div.tooltip {
     height: 100%;
     overflow: hidden;
 }
+
+.circle, .circleUfo, .circleBigfoot, .circleMeteorites {
+    width: 10px;
+    height: 10px;
+    margin-left: 3px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    display: inline-block;
+    border-radius: 50px;
+}
+.circleUfo
+{
+    margin-left: 26px;
+    background: rgb(33, 113, 181);
+}
+.circleBigfoot
+{
+    background: red;
+}
+.circleMeteorites
+{
+    margin-left: 44px;
+    background: green;
+}
+
+.badge {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    background-color: #999;
+    border-radius: 10px;
+}

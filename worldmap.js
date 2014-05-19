@@ -2,6 +2,8 @@ var worldmap = (function () {
     var exports = {};
     var country;
 
+
+
     //offsets for tooltips
     var offsetL = document.getElementById('container').offsetLeft + 20;
     var offsetT = document.getElementById('container').offsetTop + 10;
@@ -11,6 +13,7 @@ var worldmap = (function () {
     var zoom = d3.behavior.zoom()
         .scaleExtent([1, Number.POSITIVE_INFINITY])
         .on("zoom", move);
+
 
 
 
@@ -86,6 +89,8 @@ var worldmap = (function () {
             colorMap();
         });
     });
+
+
 
 
 
@@ -167,6 +172,7 @@ var worldmap = (function () {
         .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
 
     }
+
 
     
     setup(width, height);
@@ -443,6 +449,8 @@ var worldmap = (function () {
     //draw brush and ufo
     d3.json("datasets/UfoGeojson.json", function (error, data) {
         drawDataset(data, ufoDescriptor);
+        $("#circleUfo").addClass("circleUfo");
+
         d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
             setupBrush(data,bigfootData);
         });
@@ -745,29 +753,55 @@ var worldmap = (function () {
 
     /* filtering with checkboxes */
     function checkboxFilteringUfo(ufoChecked) {
-        (ufoChecked) ?
+        if(ufoChecked)
+        {
+            $("#circleUfo").addClass("circleUfo");
             d3.json("datasets/UfoGeojson.json", function (error, data) {
+
                 drawDataset(data, ufoDescriptor);
-            }) :
+            });
+        }
+        else{
+            $("#circleUfo").removeClass("circleUfo");
             datasets.ufo.selectAll("circle").remove();
+        }
+
     }
 
     function checkboxFilteringBigfoot(bigfootchecked) {
-        (bigfootchecked) ?
+        if(bigfootchecked)
+        {
+            $("#circleBigfoot").addClass("circleBigfoot");
+
             d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
                 drawDataset(data, bigfootDescriptor);
-            }) :
+            })
+        }
+        else
+        {
+            $("#circleBigfoot").removeClass("circleBigfoot");
+
             datasets.bigfoot.selectAll("circle").remove();
+
+        }
     }
 
     function checkboxFilteringMeteorites(meteoritesChecked) {
         if (meteoritesChecked) {
+            $("#circleMeteorites").addClass("circleMeteorites");
+
             d3.json("datasets/meteorites.json", function(error, data) {
                 drawDataset(data, meteoriteDescriptor);
             });
+        }
+        else{
             //datasets.bigfoot.selectAll("circle").remove();
+            $("#circleMeteorites").removeClass("circleMeteorites");
+
         }
     }
+
+
 
     exports.checkboxFilteringUfo = checkboxFilteringUfo;
     exports.checkboxFilteringBigfood = checkboxFilteringBigfoot;
