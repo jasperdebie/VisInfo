@@ -179,7 +179,7 @@ var worldmap = (function () {
         }
         color = d3.scale.threshold()
         .domain(ext_color_domain)
-        .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+        .range(["#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#006d2c"]);
 
     }
 
