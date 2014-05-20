@@ -452,14 +452,17 @@ var worldmap = (function () {
         $("#circleUfo").addClass("circleUfo");
 
         d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
-            setupBrush(data,bigfootData);
+            d3.json("datasets/meteorites.json", function (error, meteorietdata) {
+                setupBrush(data,bigfootData, meteorietdata);
+            });
+
         });
     });
 
 
 
 
-    function setupBrush(data, bigfootdata) {
+    function setupBrush(data, bigfootdata, meteorietdata) {
         /* Creation of Brush */
         var margin = {top: 30, right: 15, bottom: 20, left: 15},
             width = document.getElementById('container').offsetWidth -4,
@@ -518,6 +521,33 @@ var worldmap = (function () {
                 .attr("class", "area")
                 .attr("d", area2)
                 .attr("class", "bigfootColor");
+
+            context.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(00," + height + ")")
+                .call(xAxis);
+
+            context.append("g")
+                .attr("class", "x brush")
+                .call(brush)
+                .selectAll("rect")
+                .attr("y", -6)
+                .attr("height", height + 7);
+        });
+
+        d3.json("datasets/meteorietbrush.json", function (error, brushdata) {
+            x.domain(d3.extent(brushdata.map(function (d) {
+                return parseDate(d.year);
+            })));
+            y.domain([0, d3.max(brushdata.map(function (d) {
+                return d.amount;
+            }))]);
+
+            context.append("path")
+                .datum(brushdata)
+                .attr("class", "area")
+                .attr("d", area2)
+                .attr("class", "meteoriteColor");
 
             context.append("g")
                 .attr("class", "x axis")
