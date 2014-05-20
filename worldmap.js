@@ -179,7 +179,7 @@ var worldmap = (function () {
         }
         color = d3.scale.threshold()
         .domain(ext_color_domain)
-        .range(["#FFFEF2","#FFEEA6","#F4BE84", "#F4AC5F", "#E58D44", "#E37C38"]);
+        .range(["#c7e9c0", "#a1d99b", "#74c476", "#41ab5d", "#238b45", "#006d2c"]);
 
     }
 
@@ -475,6 +475,7 @@ var worldmap = (function () {
     //draw brush and ufo
     d3.json("datasets/new_ufos.json", function (error, ufodata) {
         drawDataset(ufodata, ufoDescriptor);
+        $("#circleUfo").addClass("circleUfo");
 
         d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
             d3.json("datasets/meteorites.json", function (error, meteorietdata) {
@@ -637,40 +638,7 @@ var worldmap = (function () {
                     return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                 })
                 .attr("class", "ufoColor")
-                .attr("r", calcScale())
-                .on("mouseout", function (d) {
-                    tooltip.classed("hidden", true);
-                    $("#extraData").text("");
-                })
-                .on("mousemove", function (d) {
-
-                    $("#extraDataHeader").text(ufoDescriptor.header);
-
-                    $("#extraData").html(ufoDescriptor.descriptor(d));
-
-                })
-                .on("click", function (d, i) {
-                    if(tooltipsVisible==false)
-                    {
-                        var mouse = d3.mouse(svg.node()).map(function (d) {
-                            return parseInt(d);
-                        });
-                        var textValue = ufoDescriptor.descriptor(d);
-
-                        tooltip.classed("hidden", false)
-                            .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                            .html(textValue);
-
-
-                        tooltipsVisible=true;
-                    }
-                    else{
-                        tooltip.classed("hidden",true);
-                        tooltipsVisible=false;
-                    }
-                });
-
-
+                .attr("r", calcScale());
             }
 
             if($(chkBigfootSpotting).prop('checked')){
@@ -690,39 +658,8 @@ var worldmap = (function () {
                     .attr("cy", function (d) {
                         return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                     })
-                    .r("class", "bigfootColor")
-                    .attr("r", calcScale())
-                    .on("mouseout", function (d) {
-                        tooltip.classed("hidden", true);
-                        $("#extraData").text("");
-                    })
-                    .on("mousemove", function (d) {
-
-                        $("#extraDataHeader").text(bigfootDescriptor.header);
-
-                        $("#extraData").html(bigfootDescriptor.descriptor(d));
-
-                    })
-                    .on("click", function (d, i) {
-                        if(tooltipsVisible==false)
-                        {
-                            var mouse = d3.mouse(svg.node()).map(function (d) {
-                                return parseInt(d);
-                            });
-                            var textValue = bigfootDescriptor.descriptor(d);
-
-                            tooltip.classed("hidden", false)
-                                .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                                .html(textValue);
-
-
-                            tooltipsVisible=true;
-                        }
-                        else{
-                            tooltip.classed("hidden",true);
-                            tooltipsVisible=false;
-                        }
-                    });
+                    .attr("class", "bigfootColor")
+                    .attr("r", calcScale());
             }
 
             if($(chkMeteorites).prop('checked')){
@@ -743,39 +680,7 @@ var worldmap = (function () {
                         return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                     })
                     .attr("class", "meteoriteColor")
-                    .attr("r", calcScale())
-                    .on("mouseout", function (d) {
-                        tooltip.classed("hidden", true);
-                        $("#extraData").text("");
-                    })
-                    .on("mousemove", function (d) {
-
-                        $("#extraDataHeader").text(meteoriteDescriptor.header);
-
-                        $("#extraData").html(meteoriteDescriptor.descriptor(d));
-
-                    })
-                    .on("click", function (d, i) {
-                        if(tooltipsVisible==false)
-                        {
-                            var mouse = d3.mouse(svg.node()).map(function (d) {
-                                return parseInt(d);
-                            });
-                            var textValue = meteoriteDescriptor.descriptor(d);
-
-                            tooltip.classed("hidden", false)
-                                .attr("style", "left:" + (mouse[0] + offsetL) + "px;top:" + (mouse[1] + offsetT) + "px")
-                                .html(textValue);
-
-
-                            tooltipsVisible=true;
-                        }
-                        else{
-                            tooltip.classed("hidden",true);
-                            tooltipsVisible=false;
-                        }
-                    });
-
+                    .attr("r", calcScale());
             }
 
             console.log(new Date(brush.extent()[0]).getFullYear());

@@ -78,12 +78,12 @@ div.tooltip {
 }
 
 .bigfootColor {
-    fill: red;
+    fill: #980043;
     opacity: .70;
 }
 
 .meteoriteColor {
-    fill: yellow;
+    fill: #feb24c;
     opacity: .70;
 }
 
@@ -116,12 +116,13 @@ div.tooltip {
 }
 .circleBigfoot
 {
-    background: red;
+    background: #980043;
+
 }
 .circleMeteorites
 {
     margin-left: 44px;
-    background: yellow;
+    background: #feb24c;
 }
 
 .badge {
