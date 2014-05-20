@@ -83,7 +83,7 @@ div.tooltip {
 }
 
 .meteoriteColor {
-    fill: green;
+    fill: yellow;
     opacity: .70;
 }
 
@@ -121,7 +121,7 @@ div.tooltip {
 .circleMeteorites
 {
     margin-left: 44px;
-    background: green;
+    background: yellow;
 }
 
 .badge {

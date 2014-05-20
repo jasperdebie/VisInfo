@@ -1,6 +1,8 @@
 var worldmap = (function () {
     var exports = {};
     var country;
+    var begindatum = 1950;
+    var einddatum = 2010;
 
 
 
@@ -467,19 +469,22 @@ var worldmap = (function () {
     }
 
     //draw brush and ufo
-    d3.json("datasets/new_ufos.json", function (error, data) {
-        drawDataset(data, ufoDescriptor);
+    d3.json("datasets/new_ufos.json", function (error, ufodata) {
+        drawDataset(ufodata, ufoDescriptor);
         $("#circleUfo").addClass("circleUfo");
 
         d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
-            setupBrush(data,bigfootData);
+            d3.json("datasets/meteorites.json", function (error, meteorietdata) {
+                setupBrush(ufodata,bigfootData, meteorietdata);
+            });
+
         });
     });
 
 
 
 
-    function setupBrush(data, bigfootdata) {
+    function setupBrush(ufodata, bigfootdata, meteorietdata) {
         /* Creation of Brush */
         var margin = {top: 30, right: 15, bottom: 20, left: 15},
             width = document.getElementById('container').offsetWidth -4,
@@ -552,6 +557,33 @@ var worldmap = (function () {
                 .attr("height", height + 7);
         });
 
+        d3.json("datasets/meteorietbrush.json", function (error, brushdata) {
+            x.domain(d3.extent(brushdata.map(function (d) {
+                return parseDate(d.year);
+            })));
+            y.domain([0, d3.max(brushdata.map(function (d) {
+                return d.amount;
+            }))]);
+
+            context.append("path")
+                .datum(brushdata)
+                .attr("class", "area")
+                .attr("d", area2)
+                .attr("class", "meteoriteColor");
+
+            context.append("g")
+                .attr("class", "x axis")
+                .attr("transform", "translate(00," + height + ")")
+                .call(xAxis);
+
+            context.append("g")
+                .attr("class", "x brush")
+                .call(brush)
+                .selectAll("rect")
+                .attr("y", -6)
+                .attr("height", height + 7);
+        });
+
         d3.json("datasets/ufobrush.json", function (error, brushdata) {
             x.domain(d3.extent(brushdata.map(function (d) {
                 return parseDate(d.year);
@@ -581,13 +613,13 @@ var worldmap = (function () {
 
 
         function brushed() {
-            var begindatum = parseInt(new Date(brush.extent()[0]).getFullYear());
-            var einddatum = parseInt(new Date(brush.extent()[1]).getFullYear());
+            begindatum = parseInt(new Date(brush.extent()[0]).getFullYear()) || 1950;
+            einddatum = parseInt(new Date(brush.extent()[1]).getFullYear()) || 2010;
 
             if($(chkUfoSpotting).prop('checked')){
             datasets.ufo.selectAll("circle").remove();
             datasets.ufo.selectAll("circle")
-                .data(data.features.filter(function (d, i) {
+                .data(ufodata.features.filter(function (d, i) {
                     if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
                         return d;
                     }
@@ -626,6 +658,27 @@ var worldmap = (function () {
                     .attr("r", calcScale());
             }
 
+            if($(chkMeteorites).prop('checked')){
+                datasets.meteorite.selectAll("circle").remove();
+                datasets.meteorite.selectAll("circle")
+                    .data(meteorietdata.features.filter(function (d, i) {
+                        if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
+                            return d;
+                        }
+                    }))
+                    .enter()
+                    .append("circle")
+                    .attr("class", "circles")
+                    .attr("cx", function (d) {
+                        return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+                    })
+                    .attr("cy", function (d) {
+                        return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+                    })
+                    .attr("class", "meteoriteColor")
+                    .attr("r", calcScale());
+            }
+
             console.log(new Date(brush.extent()[0]).getFullYear());
             console.log(new Date(brush.extent()[1]).getFullYear());
 
@@ -645,7 +698,11 @@ var worldmap = (function () {
         datasets[opts.group] = g.append("g");
         var dataset = datasets[opts.group];
         dataset.selectAll("circle")
-            .data(data.features)
+            .data(data.features.filter(function (d, i) {
+                if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
+                    return d;
+                }
+            }))
             .enter()
             .append("circle")
             .attr("cx", function (d) {
@@ -777,7 +834,6 @@ var worldmap = (function () {
         {
             $("#circleUfo").addClass("circleUfo");
             d3.json("datasets/new_ufos.json", function (error, data) {
-
                 drawDataset(data, ufoDescriptor);
             });
         }
@@ -817,7 +873,7 @@ var worldmap = (function () {
         else{
             //datasets.bigfoot.selectAll("circle").remove();
             $("#circleMeteorites").removeClass("circleMeteorites");
-
+            datasets.meteorite.selectAll("circle").remove();
         }
     }
 
