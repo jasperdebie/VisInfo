@@ -41,7 +41,6 @@ var worldmap = (function () {
     var bigfootDescriptor = {
         descriptor: function(d) {
             return "Name: " +d.properties.Name+
-                "<br>Description: <a href=" +d.properties.Description +">Details"+ "</a>"+
                 "<br>Year: "+ d.properties.year;
         },
         colorClass: "bigfootColor",
