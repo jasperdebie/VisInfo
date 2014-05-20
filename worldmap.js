@@ -1,3 +1,8 @@
+/***
+ * Jasper Debie, Jochen François, Michael Lippens, Ayrton Vercruysse
+ * 2014
+ */
+
 var worldmap = (function () {
     var exports = {};
     var country;
