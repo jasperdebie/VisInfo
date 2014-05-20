@@ -26,10 +26,11 @@ var worldmap = (function () {
 
     var ufoDescriptor = {
         descriptor: function(d) {
-            return "Name: " +d.properties.name+
-                "<br>Mass: "+ d.properties.mass+
+            return "<br>City: "+ d.properties.city+
                 "<br>Year: "+ d.properties.year+
-                "<br>ReccClass: "+ d.properties.recclass;
+                "<br>Date Sighted: "+ d.properties["date sighted"].year+
+                "<br>Date Reported: "+ d.properties["date reported"].year;
+
 
         },
         colorClass: "ufoColor",
@@ -88,11 +89,13 @@ var worldmap = (function () {
     setLegend();
 
 
+
     $(function(){
         $("input[name='optionsRadios']").on("click", function(e){
             var newsort = parseInt($(this).val());
             sort = newsort;
             setLegend();
+            drawLegend();
             colorMap();
         });
     });
@@ -260,7 +263,6 @@ var worldmap = (function () {
 
     function setup(width, height) {
 
-
         projection = d3.geo.mercator()
             .translate([(width / 2), (height / 2)])
             .scale(width / 2 / Math.PI);
@@ -286,15 +288,25 @@ var worldmap = (function () {
         //var legend_labels2 = ["< 0.00", "10", "50", "100", "200"];
     }
 
+    var legend=undefined;
     function drawLegend(){
 
-        var legend = svg.selectAll("g.legend")
+        if(legend===undefined)
+        {
+            legend = svg.selectAll("g.legend")
+
+        }
+        legend
             .data(ext_color_domain)
             .enter().append("g")
+
             .attr("class", "legend");
+
+
 
         var ls_w = 20, ls_h = 20;
 
+        legend.selectAll("rect").remove();
         legend.append("rect")
             .attr("x", 20)
             .attr("y", function (d, i) {
@@ -307,13 +319,20 @@ var worldmap = (function () {
             })
             .style("opacity", 0.8);
 
+        legend.selectAll("text").remove();
+
+
         legend.append("text")
             .attr("x", 50)
             .attr("y", function (d, i) {
                 return height - (i * ls_h) - ls_h - 4;
             })
-            .text(function (d, i) {return legend_labels[i]                  
-            });
+
+            .text(function (d, i) {
+                return legend_labels[i]
+            })
+
+        ;
 
     }
 
