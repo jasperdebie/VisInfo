@@ -28,8 +28,8 @@ var worldmap = (function () {
         descriptor: function(d) {
             return "<br>City: "+ d.properties.city+
                 "<br>Year: "+ d.properties.year+
-                "<br>Date Sighted: "+ d.properties["date sighted"].year+
-                "<br>Date Reported: "+ d.properties["date reported"].year;
+                "<br>Date Sighted: "+ d.properties.sighted+
+                "<br>Date Reported: "+ d.properties.reported;
 
 
         },
