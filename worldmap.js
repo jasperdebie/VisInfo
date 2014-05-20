@@ -836,13 +836,11 @@ var worldmap = (function () {
     function checkboxFilteringUfo(ufoChecked) {
         if(ufoChecked)
         {
-            $("#circleUfo").addClass("circleUfo");
             d3.json("datasets/new_ufos.json", function (error, data) {
                 drawDataset(data, ufoDescriptor);
             });
         }
         else{
-            $("#circleUfo").removeClass("circleUfo");
             datasets.ufo.selectAll("circle").remove();
         }
 
@@ -851,7 +849,6 @@ var worldmap = (function () {
     function checkboxFilteringBigfoot(bigfootchecked) {
         if(bigfootchecked)
         {
-            $("#circleBigfoot").addClass("circleBigfoot");
 
             d3.json("datasets/bigfootfiltered.geojson", function (error, data) {
                 drawDataset(data, bigfootDescriptor);
@@ -859,7 +856,6 @@ var worldmap = (function () {
         }
         else
         {
-            $("#circleBigfoot").removeClass("circleBigfoot");
 
             datasets.bigfoot.selectAll("circle").remove();
 
@@ -868,7 +864,6 @@ var worldmap = (function () {
 
     function checkboxFilteringMeteorites(meteoritesChecked) {
         if (meteoritesChecked) {
-            $("#circleMeteorites").addClass("circleMeteorites");
 
             d3.json("datasets/meteorites.json", function(error, data) {
                 drawDataset(data, meteoriteDescriptor);
@@ -876,7 +871,6 @@ var worldmap = (function () {
         }
         else{
             //datasets.bigfoot.selectAll("circle").remove();
-            $("#circleMeteorites").removeClass("circleMeteorites");
             datasets.meteorite.selectAll("circle").remove();
         }
     }
