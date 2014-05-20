@@ -453,7 +453,7 @@ var worldmap = (function () {
 
         d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
             d3.json("datasets/meteorites.json", function (error, meteorietdata) {
-                setupBrush(data,bigfootData, meteorietdata);
+                setupBrush(data, bigfootData, meteorietdata);
             });
 
         });

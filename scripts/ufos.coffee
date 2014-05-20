@@ -32,6 +32,7 @@ for k, v of features
   year = parseInt(year.slice(0, 4))
   if year > max
     max = year
+  v.properties["year"] = year.toString()
 
 amounts = {}
 for i in [min..max]
@@ -49,7 +50,7 @@ console.log amounts
 results = []
 for k in [min..max]
   v = amounts[k]
-  results.push({"year": k, "amount": v})
+  results.push({"year": k.toString(), "amount": v})
 
 
 file.features = features
