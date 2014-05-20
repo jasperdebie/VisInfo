@@ -1,6 +1,8 @@
 var worldmap = (function () {
     var exports = {};
     var country;
+    var begindatum = 1950;
+    var einddatum = 2010;
 
 
 
@@ -591,8 +593,8 @@ var worldmap = (function () {
 
 
         function brushed() {
-            var begindatum = parseInt(new Date(brush.extent()[0]).getFullYear());
-            var einddatum = parseInt(new Date(brush.extent()[1]).getFullYear());
+            begindatum = parseInt(new Date(brush.extent()[0]).getFullYear()) || 1950;
+            einddatum = parseInt(new Date(brush.extent()[1]).getFullYear()) || 2010;
 
             if($(chkUfoSpotting).prop('checked')){
             datasets.ufo.selectAll("circle").remove();
@@ -676,7 +678,11 @@ var worldmap = (function () {
         datasets[opts.group] = g.append("g");
         var dataset = datasets[opts.group];
         dataset.selectAll("circle")
-            .data(data.features)
+            .data(data.features.filter(function (d, i) {
+                if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
+                    return d;
+                }
+            }))
             .enter()
             .append("circle")
             .attr("cx", function (d) {
@@ -808,7 +814,6 @@ var worldmap = (function () {
         {
             $("#circleUfo").addClass("circleUfo");
             d3.json("datasets/new_ufos.json", function (error, data) {
-
                 drawDataset(data, ufoDescriptor);
             });
         }
