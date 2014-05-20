@@ -447,13 +447,13 @@ var worldmap = (function () {
     }
 
     //draw brush and ufo
-    d3.json("datasets/new_ufos.json", function (error, data) {
-        drawDataset(data, ufoDescriptor);
+    d3.json("datasets/new_ufos.json", function (error, ufodata) {
+        drawDataset(ufodata, ufoDescriptor);
         $("#circleUfo").addClass("circleUfo");
 
         d3.json("datasets/bigfootfiltered.geojson", function (error, bigfootData) {
             d3.json("datasets/meteorites.json", function (error, meteorietdata) {
-                setupBrush(data, bigfootData, meteorietdata);
+                setupBrush(ufodata,bigfootData, meteorietdata);
             });
 
         });
@@ -462,7 +462,7 @@ var worldmap = (function () {
 
 
 
-    function setupBrush(data, bigfootdata, meteorietdata) {
+    function setupBrush(ufodata, bigfootdata, meteorietdata) {
         /* Creation of Brush */
         var margin = {top: 30, right: 15, bottom: 20, left: 15},
             width = document.getElementById('container').offsetWidth -4,
@@ -597,7 +597,7 @@ var worldmap = (function () {
             if($(chkUfoSpotting).prop('checked')){
             datasets.ufo.selectAll("circle").remove();
             datasets.ufo.selectAll("circle")
-                .data(data.features.filter(function (d, i) {
+                .data(ufodata.features.filter(function (d, i) {
                     if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
                         return d;
                     }
@@ -633,6 +633,27 @@ var worldmap = (function () {
                         return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
                     })
                     .attr("class", "bigfootColor")
+                    .attr("r", calcScale());
+            }
+
+            if($(chkMeteorites).prop('checked')){
+                datasets.meteorite.selectAll("circle").remove();
+                datasets.meteorite.selectAll("circle")
+                    .data(meteorietdata.features.filter(function (d, i) {
+                        if (begindatum <= parseInt(d.properties.year) && parseInt(d.properties.year) <= einddatum) {
+                            return d;
+                        }
+                    }))
+                    .enter()
+                    .append("circle")
+                    .attr("class", "circles")
+                    .attr("cx", function (d) {
+                        return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[0];
+                    })
+                    .attr("cy", function (d) {
+                        return projection([d.geometry.coordinates[0], d.geometry.coordinates[1]])[1];
+                    })
+                    .attr("class", "meteoriteColor")
                     .attr("r", calcScale());
             }
 
@@ -827,7 +848,7 @@ var worldmap = (function () {
         else{
             //datasets.bigfoot.selectAll("circle").remove();
             $("#circleMeteorites").removeClass("circleMeteorites");
-
+            datasets.meteorite.selectAll("circle").remove();
         }
     }
 
