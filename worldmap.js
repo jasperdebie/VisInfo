@@ -26,7 +26,7 @@ var worldmap = (function () {
 
     var ufoDescriptor = {
         descriptor: function(d) {
-            return "<br>City: "+ d.properties.city+
+            return "City: "+ d.properties.city+
                 "<br>Year: "+ d.properties.year+
                 "<br>Date Sighted: "+ d.properties.sighted+
                 "<br>Date Reported: "+ d.properties.reported;
