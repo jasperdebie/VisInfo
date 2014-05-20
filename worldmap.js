@@ -447,7 +447,7 @@ var worldmap = (function () {
     }
 
     //draw brush and ufo
-    d3.json("datasets/UfoGeojson.json", function (error, data) {
+    d3.json("datasets/new_ufos.json", function (error, data) {
         drawDataset(data, ufoDescriptor);
         $("#circleUfo").addClass("circleUfo");
 
@@ -532,7 +532,7 @@ var worldmap = (function () {
                 .attr("height", height + 7);
         });
 
-        d3.json("datasets/brushData.json", function (error, brushdata) {
+        d3.json("datasets/ufobrush.json", function (error, brushdata) {
             x.domain(d3.extent(brushdata.map(function (d) {
                 return parseDate(d.year);
             })));
@@ -756,7 +756,7 @@ var worldmap = (function () {
         if(ufoChecked)
         {
             $("#circleUfo").addClass("circleUfo");
-            d3.json("datasets/UfoGeojson.json", function (error, data) {
+            d3.json("datasets/new_ufos.json", function (error, data) {
 
                 drawDataset(data, ufoDescriptor);
             });
