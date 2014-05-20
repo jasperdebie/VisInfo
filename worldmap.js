@@ -21,10 +21,11 @@ var worldmap = (function () {
 
     var ufoDescriptor = {
         descriptor: function(d) {
-            return "Name: " +d.properties.name+
-                "<br>Mass: "+ d.properties.mass+
+            return "<br>City: "+ d.properties.city+
                 "<br>Year: "+ d.properties.year+
-                "<br>ReccClass: "+ d.properties.recclass;
+                "<br>Date Sighted: "+ d.properties["date sighted"].year+
+                "<br>Date Reported: "+ d.properties["date reported"].year;
+
 
         },
         colorClass: "ufoColor",
@@ -287,7 +288,6 @@ var worldmap = (function () {
 
         if(legend===undefined)
         {
-            console.log("fuck this shit");
             legend = svg.selectAll("g.legend")
 
         }
@@ -324,7 +324,6 @@ var worldmap = (function () {
             })
 
             .text(function (d, i) {
-                console.log("fuck theeeees shits")
                 return legend_labels[i]
             })
 
