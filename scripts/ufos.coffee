@@ -25,6 +25,12 @@ for k, v of features
 
 features = features.filter (e)-> e
 
+formatdate = (s)->
+  y = parseInt(s.slice(0,4))
+  m = parseInt(s.slice(5,6))
+  d = parseInt(s.slice(7,8))
+  return d + "/" + m + "/" + y
+
 max = Number.MIN_VALUE
 min = threshold
 for k, v of features
@@ -33,6 +39,11 @@ for k, v of features
   if year > max
     max = year
   v.properties["year"] = year.toString()
+  v.properties["sighted"] = formatdate(v.properties["date sighted"])
+  v.properties["reported"] = formatdate(v.properties["date reported"])
+
+
+
 
 amounts = {}
 for i in [min..max]
